@@ -7,17 +7,28 @@ export class Permutations<T> extends model.ElementModel<T>{
 	}
 
 	perm(num?:number): Permutations<T> {
-		var permnum = num || this.elements.length;
+		let permnum = num || this.elements.length;
 		return new Permutations(Heap_gen(this.elements, permnum));
 	}
 
 	output_with_repetition(num?:number): Permutations<T> {
-		var vec = rand_vector(this.elements.length, this.elements.length-1);
+		let vec = rand_vector(this.elements.length, this.elements.length-1);
 		return new Permutations(vec.map(x => this.elements[x]));
 	}
 
 	multiply(elems: T[]) {
+		let result = [];
+		for(let i = 0;i < this.elements.length;++i){
+			result.push(this.elements[i]);
+		}
 
+		for(let i = 0;i < elems.length;++i) {
+			if(result.indexOf(elems[i]) == -1) {
+				result.push(elems[i]);
+			}
+		}
+
+		return new Permutations(result);
 	}
 }
 

@@ -122,6 +122,16 @@ var Permutations = (function (_super) {
         return new Permutations(vec.map(function (x) { return _this.elements[x]; }));
     };
     Permutations.prototype.multiply = function (elems) {
+        var result = [];
+        for (var i = 0; i < this.elements.length; ++i) {
+            result.push(this.elements[i]);
+        }
+        for (var i = 0; i < elems.length; ++i) {
+            if (result.indexOf(elems[i]) == -1) {
+                result.push(elems[i]);
+            }
+        }
+        return new Permutations(result);
     };
     return Permutations;
 })(model.ElementModel);
