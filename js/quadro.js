@@ -86,19 +86,42 @@ var Monoid = (function () {
 exports.Monoid = Monoid;
 
 var Permutations = (function () {
-    function Permutations() {
-    }
-    Permutations.prototype.construct = function (elems) {
+    function Permutations(elems) {
         this.elements = elems;
-    };
+    }
     Permutations.prototype.output = function () {
-        return this.elements;
+        return Heap_gen(this.elements, this.elements.length);
     };
     Permutations.prototype.multiply = function (elems) {
     };
     return Permutations;
 })();
 exports.Permutations = Permutations;
+function Heap_gen(elements, num) {
+    if (num <= 1) {
+        return elements;
+    }
+    for (var i = 0; i < num - 1; ++i) {
+        Heap_gen(elements, num - 1);
+        if (num % 2 == 0) {
+            var res = swap(elements[i], elements[num - 1]);
+            elements[i] = res[0];
+            elements[num - 1] = res[1];
+        }
+        else {
+            var res = swap(elements[0], elements[num - 1]);
+            elements[0] = res[0];
+            elements[num - 1] = res[1];
+        }
+    }
+    return Heap_gen(elements, num - 1);
+}
+function swap(elem1, elem2) {
+    var tmp = elem2;
+    elem2 = elem1;
+    elem1 = tmp;
+    return [elem1, elem2];
+}
 
 var Set = (function () {
     function Set(values) {
