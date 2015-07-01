@@ -1,12 +1,14 @@
 export class Functor<T, Y>{
-
-    constructor (){}
-    fmap(X:T[], func:(A:T) => Y): Y[]{
-       return X.map(func)
+    protected elements: T[];
+    constructor (elems: T[]){
+        this.elements = elems;
+    }
+    fmap(func:(A:T) => Y): Y[]{
+       return this.elements.map(func)
     }
 
-    fmap2(X:T[], func:(A:T) => Y, func2:(A:Y) => Y): Y[]{
-    	return X.map(func).map(func2)
+    fmap2(func:(A:T) => Y, func2:(A:Y) => Y): Y[]{
+    	return this.elements.map(func).map(func2)
     }
 
     fmapN(X: T, ... func:((A:T) => T)[]): T {
@@ -16,5 +18,9 @@ export class Functor<T, Y>{
     	}
 
     	return start
+    }
+
+    output(): T[] {
+        return this.elements;
     }
  }

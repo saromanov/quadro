@@ -15,13 +15,14 @@ var Abelian = (function () {
 exports.Abelian = Abelian;
 
 var Functor = (function () {
-    function Functor() {
+    function Functor(elems) {
+        this.elements = elems;
     }
-    Functor.prototype.fmap = function (X, func) {
-        return X.map(func);
+    Functor.prototype.fmap = function (func) {
+        return this.elements.map(func);
     };
-    Functor.prototype.fmap2 = function (X, func, func2) {
-        return X.map(func).map(func2);
+    Functor.prototype.fmap2 = function (func, func2) {
+        return this.elements.map(func).map(func2);
     };
     Functor.prototype.fmapN = function (X) {
         var func = [];
@@ -33,6 +34,9 @@ var Functor = (function () {
             start = func[i](start);
         }
         return start;
+    };
+    Functor.prototype.output = function () {
+        return this.elements;
     };
     return Functor;
 })();
@@ -93,6 +97,9 @@ var Permutations = (function () {
         var permnum = num || this.elements.length;
         return Heap_gen(this.elements, permnum);
     };
+    /*rand_output(num?number): T[] {
+
+    }*/
     Permutations.prototype.multiply = function (elems) {
     };
     return Permutations;
@@ -123,6 +130,9 @@ function swap(elem1, elem2) {
     elem1 = tmp;
     return [elem1, elem2];
 }
+/*function rand_vector(num: number):number[] {
+
+}*/ 
 
 var Set = (function () {
     function Set(values) {
