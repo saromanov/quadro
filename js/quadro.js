@@ -53,6 +53,7 @@ var Functor = (function () {
 })();
 exports.Functor = Functor;
 
+//Definition of group
 var Group = (function () {
     function Group(elems) {
         this.elements = elems;
@@ -63,6 +64,17 @@ var Group = (function () {
     return Group;
 })();
 exports.Group = Group;
+//ConstantGroup is generalization of Trivial group
+var ConstantGroup = (function () {
+    function ConstantGroup(element) {
+        this.element = element;
+    }
+    ConstantGroup.prototype.output = function () {
+        return this.element;
+    };
+    return ConstantGroup;
+})();
+exports.ConstantGroup = ConstantGroup;
 
 var ZeroItem = (function () {
     function ZeroItem(zero) {
