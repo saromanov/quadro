@@ -14,11 +14,16 @@ var Abelian = (function () {
 })();
 exports.Abelian = Abelian;
 
-var Model = (function () {
-    function Model() {
+var ElementModel = (function () {
+    function ElementModel(elems) {
+        this.elements = elems;
     }
-    return Model;
+    ElementModel.prototype.output = function () {
+        return this.elements;
+    };
+    return ElementModel;
 })();
+exports.ElementModel = ElementModel;
 
 var Functor = (function () {
     function Functor(elems) {
@@ -95,9 +100,17 @@ var Monoid = (function () {
 })();
 exports.Monoid = Monoid;
 
-var Permutations = (function () {
+var __extends = this.__extends || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+var model = require('./Abstract');
+var Permutations = (function (_super) {
+    __extends(Permutations, _super);
     function Permutations(elems) {
-        this.elements = elems;
+        _super.call(this, elems);
     }
     Permutations.prototype.perm = function (num) {
         var permnum = num || this.elements.length;
@@ -111,7 +124,7 @@ var Permutations = (function () {
     Permutations.prototype.multiply = function (elems) {
     };
     return Permutations;
-})();
+})(model.ElementModel);
 exports.Permutations = Permutations;
 function Heap_gen(elements, num) {
     if (num <= 1) {

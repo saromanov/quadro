@@ -1,7 +1,9 @@
-export class Permutations<T> {
+import model= require('./Abstract')
+
+export class Permutations<T> extends model.ElementModel<T>{
 	protected elements: T[];
 	constructor(elems:T[]) {
-		this.elements = elems;
+		super(elems);
 	}
 
 	perm(num?:number): T[] {
