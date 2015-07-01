@@ -6,14 +6,14 @@ export class Permutations<T> extends model.ElementModel<T>{
 		super(elems);
 	}
 
-	perm(num?:number): T[] {
+	perm(num?:number): Permutations<T> {
 		var permnum = num || this.elements.length;
-		return Heap_gen(this.elements, permnum);
+		return new Permutations(Heap_gen(this.elements, permnum));
 	}
 
-	output_with_repetition(num?:number): T[] {
+	output_with_repetition(num?:number): Permutations<T> {
 		var vec = rand_vector(this.elements.length, this.elements.length-1);
-		return vec.map(x => this.elements[x]);
+		return new Permutations(vec.map(x => this.elements[x]));
 	}
 
 	multiply(elems: T[]) {
