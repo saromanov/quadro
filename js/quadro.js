@@ -53,28 +53,15 @@ var Functor = (function () {
 })();
 exports.Functor = Functor;
 
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
-var IGroup = (function () {
-    function IGroup(elems) {
-    }
-    return IGroup;
-})();
-var Group = (function (_super) {
-    __extends(Group, _super);
+var Group = (function () {
     function Group(elems) {
-        _super.call(this, elems);
+        this.elements = elems;
     }
-    //Return true is group is abelian
-    Group.prototype.isAbelian = function () {
-        return true;
+    Group.prototype.negate = function () {
+        return this.elements.map(function (x) { return -x; });
     };
     return Group;
-})(IGroup);
+})();
 exports.Group = Group;
 
 var ZeroItem = (function () {

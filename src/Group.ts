@@ -1,16 +1,10 @@
-class IGroup<T> {
-	constructor(elems:T[]) {
-		
-	}
-}
-
-export class Group<T> extends IGroup<T> {
-    constructor(elems: T[]){
-    	super(elems);
+export class Group{
+    private elements: number[];
+    constructor(elems: number[]){
+    	this.elements = elems;
     }
 
-    //Return true is group is abelian
-    isAbelian():boolean {
-    	return true
+    negate(): number[] {
+        return this.elements.map(x => -x);
     }
 }
