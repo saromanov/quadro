@@ -4,8 +4,9 @@ export class Permutations<T> {
 		this.elements = elems;
 	}
 
-	output(): T[] {
-		return Heap_gen(this.elements, this.elements.length);
+	output(num?:number): T[] {
+		var permnum = num || this.elements.length;
+		return Heap_gen(this.elements, permnum);
 	}
 
 	multiply(elems: T[]) {

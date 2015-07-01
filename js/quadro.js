@@ -89,8 +89,9 @@ var Permutations = (function () {
     function Permutations(elems) {
         this.elements = elems;
     }
-    Permutations.prototype.output = function () {
-        return Heap_gen(this.elements, this.elements.length);
+    Permutations.prototype.output = function (num) {
+        var permnum = num || this.elements.length;
+        return Heap_gen(this.elements, permnum);
     };
     Permutations.prototype.multiply = function (elems) {
     };
