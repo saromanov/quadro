@@ -97,9 +97,11 @@ var Permutations = (function () {
         var permnum = num || this.elements.length;
         return Heap_gen(this.elements, permnum);
     };
-    /*rand_output(num?number): T[] {
-
-    }*/
+    Permutations.prototype.output_with_repetition = function (num) {
+        var _this = this;
+        var vec = rand_vector(this.elements.length, this.elements.length - 1);
+        return vec.map(function (x) { return _this.elements[x]; });
+    };
     Permutations.prototype.multiply = function (elems) {
     };
     return Permutations;
@@ -130,9 +132,13 @@ function swap(elem1, elem2) {
     elem1 = tmp;
     return [elem1, elem2];
 }
-/*function rand_vector(num: number):number[] {
-
-}*/ 
+function rand_vector(num, bound) {
+    var res = [];
+    for (var i = 0; i < num; ++i) {
+        res.push(Math.floor((Math.random() * bound) + 1));
+    }
+    return res;
+}
 
 var Set = (function () {
     function Set(values) {

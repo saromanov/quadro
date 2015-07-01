@@ -9,6 +9,11 @@ export class Permutations<T> {
 		return Heap_gen(this.elements, permnum);
 	}
 
+	output_with_repetition(num?:number): T[] {
+		var vec = rand_vector(this.elements.length, this.elements.length-1);
+		return vec.map(x => this.elements[x]);
+	}
+
 	multiply(elems: T[]) {
 
 	}
@@ -40,4 +45,12 @@ function swap<T>(elem1: T, elem2: T): T[] {
 	elem2 = elem1;
 	elem1 = tmp;
 	return [elem1, elem2];
+}
+
+function rand_vector(num: number, bound: number):number[] {
+	var res = [];
+	for(var i = 0;i < num;++i) {
+		res.push(Math.floor((Math.random() * bound) + 1)); 
+	}
+	return res;
 }
