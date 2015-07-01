@@ -14,6 +14,12 @@ var Abelian = (function () {
 })();
 exports.Abelian = Abelian;
 
+var Model = (function () {
+    function Model() {
+    }
+    return Model;
+})();
+
 var Functor = (function () {
     function Functor(elems) {
         this.elements = elems;
@@ -93,7 +99,7 @@ var Permutations = (function () {
     function Permutations(elems) {
         this.elements = elems;
     }
-    Permutations.prototype.output = function (num) {
+    Permutations.prototype.perm = function (num) {
         var permnum = num || this.elements.length;
         return Heap_gen(this.elements, permnum);
     };

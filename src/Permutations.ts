@@ -4,7 +4,7 @@ export class Permutations<T> {
 		this.elements = elems;
 	}
 
-	output(num?:number): T[] {
+	perm(num?:number): T[] {
 		var permnum = num || this.elements.length;
 		return Heap_gen(this.elements, permnum);
 	}
