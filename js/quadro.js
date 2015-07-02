@@ -119,6 +119,35 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
+var Option = (function () {
+    function Option(item) {
+        this.item = item;
+    }
+    return Option;
+})();
+var Some = (function (_super) {
+    __extends(Some, _super);
+    function Some(item) {
+        _super.call(this, item);
+    }
+    return Some;
+})(Option);
+exports.Some = Some;
+var None = (function (_super) {
+    __extends(None, _super);
+    function None() {
+        _super.call(this, null);
+    }
+    return None;
+})(Option);
+exports.None = None;
+
+var __extends = this.__extends || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
 var model = require('./Abstract');
 var Permutations = (function (_super) {
     __extends(Permutations, _super);
