@@ -53,17 +53,31 @@ var Functor = (function () {
 })();
 exports.Functor = Functor;
 
+var __extends = this.__extends || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
 //Definition of group
 var Group = (function () {
     function Group(elems) {
         this.elements = elems;
     }
-    Group.prototype.negate = function () {
-        return this.elements.map(function (x) { return -x; });
-    };
     return Group;
 })();
 exports.Group = Group;
+var SimpleGroup = (function (_super) {
+    __extends(SimpleGroup, _super);
+    function SimpleGroup(elems) {
+        _super.call(this, elems);
+    }
+    SimpleGroup.prototype.negate = function () {
+        return this.elements.map(function (x) { return -x; });
+    };
+    return SimpleGroup;
+})(Group);
+exports.SimpleGroup = SimpleGroup;
 //ConstantGroup is generalization of Trivial group
 var ConstantGroup = (function () {
     function ConstantGroup(element) {

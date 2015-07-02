@@ -1,9 +1,15 @@
 
 //Definition of group
 export class Group{
-    private elements: number[];
+    protected elements: number[];
     constructor(elems: number[]){
     	this.elements = elems;
+    }
+}
+
+export class SimpleGroup extends Group{
+    constructor(elems: number[]) {
+        super(elems);
     }
 
     negate(): number[] {
