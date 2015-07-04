@@ -211,6 +211,15 @@ function rand_vector(num, bound) {
     return res;
 }
 
+var Semigroup = (function () {
+    function Semigroup(left, right) {
+        this.left = left;
+        this.right = right;
+    }
+    return Semigroup;
+})();
+exports.Semigroup = Semigroup;
+
 var Set = (function () {
     function Set(values) {
         this.values = values;
