@@ -30,10 +30,6 @@ export class Permutations<T> extends model.ElementModel<T>{
 
 		return new Permutations(result);
 	}
-
-	output(): T[] {
-		return this.elements;
-	}
 }
 
 
@@ -58,15 +54,15 @@ function Heap_gen<T>(elements: T[], num:number): T[] {
 }
 
 function swap<T>(elem1: T, elem2: T): T[] {
-	var tmp = elem2;
+	let tmp = elem2;
 	elem2 = elem1;
 	elem1 = tmp;
 	return [elem1, elem2];
 }
 
 function rand_vector(num: number, bound: number):number[] {
-	var res = [];
-	for(var i = 0;i < num;++i) {
+	let res = [];
+	for(let i = 0;i < num;++i) {
 		res.push(Math.floor((Math.random() * bound) + 1)); 
 	}
 	return res;
