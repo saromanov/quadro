@@ -30,6 +30,10 @@ export class Permutations<T> extends model.ElementModel<T>{
 
 		return new Permutations(result);
 	}
+
+	output(): T[] {
+		return this.elements;
+	}
 }
 
 
