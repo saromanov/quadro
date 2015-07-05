@@ -59,6 +59,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
+var permutations = require('./Permutations');
 //Definition of group
 var Group = (function () {
     function Group(elems) {
@@ -89,6 +90,60 @@ var ConstantGroup = (function () {
     return ConstantGroup;
 })();
 exports.ConstantGroup = ConstantGroup;
+//Construct symmetric group
+/*Symmetric group
+degree provides number of permutations with degree!
+For example if degree = 4, this is S4 group
+http://groupprops.subwiki.org/wiki/Symmetric_group:S4
+*/
+var SymmetricGroup = (function () {
+    function SymmetricGroup(degree) {
+        this.degree = degree;
+        //console.log(new Permutations.Permutations([1,2,3]));
+        this.items = this.constructElements(degree);
+    }
+    SymmetricGroup.prototype.constructElements = function (degree) {
+        var list = [];
+        for (var i = 1; i <= degree; ++i) {
+            list.push(i);
+        }
+        var perm = new permutations.Permutations(list);
+        this.ordernum = perm.total_num_of_permutations();
+        this.listelements = list;
+        return perm.all_permutations();
+    };
+    SymmetricGroup.prototype.order = function () {
+        return this.ordernum;
+    };
+    //Exponent of the group
+    SymmetricGroup.prototype.exponent = function () {
+        var item = lcm(this.listelements[0], this.listelements[1]);
+        for (var i = 2; i < this.listelements.length; ++i) {
+            item = lcm(item, this.listelements[i]);
+        }
+        return item;
+    };
+    SymmetricGroup.prototype.elements = function () {
+        return this.items;
+    };
+    return SymmetricGroup;
+})();
+exports.SymmetricGroup = SymmetricGroup;
+function lcm(num1, num2) {
+    return num1 * num2 / gcd(num1, num2);
+}
+function gcd(num1, num2) {
+    if (num1 == undefined || num2 == undefined) {
+        return 0;
+    }
+    var tmp;
+    while (num1 != 0) {
+        tmp = num1;
+        num1 = num2 % num1;
+        num2 = tmp;
+    }
+    return num2;
+}
 
 var ZeroItem = (function () {
     function ZeroItem(zero) {
@@ -154,9 +209,17 @@ var Permutations = (function (_super) {
     function Permutations(elems) {
         _super.call(this, elems);
     }
+    //Single permutation of elements
     Permutations.prototype.perm = function (num) {
         var permnum = num || this.elements.length;
-        return new Permutations(Heap_gen(this.elements, permnum));
+        return new Permutations(perms(this.elements, this.elements.length, true)[0]);
+    };
+    //return list of all permutations
+    Permutations.prototype.all_permutations = function () {
+        return perms(this.elements, this.elements.length);
+    };
+    Permutations.prototype.total_num_of_permutations = function () {
+        return total_number_of_permutations(this.elements.length);
     };
     Permutations.prototype.output_with_repetition = function (num) {
         var _this = this;
@@ -178,37 +241,48 @@ var Permutations = (function (_super) {
     return Permutations;
 })(model.ElementModel);
 exports.Permutations = Permutations;
-function Heap_gen(elements, num) {
-    if (num <= 1) {
-        return elements;
-    }
-    for (var i = 0; i < num - 1; ++i) {
-        Heap_gen(elements, num - 1);
-        if (num % 2 == 0) {
-            var res = swap(elements[i], elements[num - 1]);
-            elements[i] = res[0];
-            elements[num - 1] = res[1];
-        }
-        else {
-            var res = swap(elements[0], elements[num - 1]);
-            elements[0] = res[0];
-            elements[num - 1] = res[1];
-        }
-    }
-    return Heap_gen(elements, num - 1);
-}
-function swap(elem1, elem2) {
-    var tmp = elem2;
-    elem2 = elem1;
-    elem1 = tmp;
-    return [elem1, elem2];
-}
 function rand_vector(num, bound) {
     var res = [];
     for (var i = 0; i < num; ++i) {
         res.push(Math.floor((Math.random() * bound) + 1));
     }
     return res;
+}
+function total_number_of_permutations(num) {
+    var result = 1;
+    for (var i = 1; i <= num; ++i) {
+        result *= i;
+    }
+    return result;
+}
+function perms(elements, len, single) {
+    if (single === void 0) { single = false; }
+    var results = [];
+    var permHeap = function (elements, num) {
+        if (num == 1) {
+            results.push(elements.slice(0));
+        }
+        for (var i = 0; i < num; ++i) {
+            if (!single) {
+                permHeap(elements, num - 1);
+            }
+            if (num % 2 == 0) {
+                var tmp = elements[i];
+                elements[i] = elements[num - 1];
+                elements[num - 1] = tmp;
+            }
+            else {
+                var tmp = elements[0];
+                elements[0] = elements[num - 1];
+                elements[num - 1] = tmp;
+            }
+        }
+        if (single) {
+            results.push(elements.slice(0));
+        }
+    };
+    permHeap(elements, len);
+    return results;
 }
 
 var Semigroup = (function () {
