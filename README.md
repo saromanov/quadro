@@ -5,7 +5,7 @@ Work in progress
 ## Usage
 
 ### Permutations
-SIngle permutation
+Single permutation
 
 ```javascript
 var perm = new quadro.Permutations([7,4,5,8]);
@@ -30,9 +30,17 @@ console.log(perm.all_permutations());
 */
 ```
 
-
 Multiplication of permutations
 ```javascript
 var perm = new quadro.Permutations([7,4,5,8]);
 console.log(perm.multiply([2,1,9]).output()); //[ 7, 4, 5, 8, 2, 1, 9 ]
+```
+
+### Groups
+Symmetric group
+```javascript
+//Construct S4 group
+var symm4 = new quadro.SymmetricGroup(4);
+console.log(symm4.order()); //6
+console.log(symm4.exponent()); //6
 ```
