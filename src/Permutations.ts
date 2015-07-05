@@ -6,7 +6,7 @@ export class Permutations<T> extends model.ElementModel<T>{
 		super(elems);
 	}
 
-	//Simple permutation of elements
+	//Single permutation of elements
 	perm(num?:number): Permutations<T> {
 		let permnum = num || this.elements.length;
 		return new Permutations(this.elements);
@@ -36,6 +36,10 @@ export class Permutations<T> extends model.ElementModel<T>{
 		}
 		permHeap(this.elements, this.elements.length);
 		return results;
+	}
+
+	total_num_of_permutations():number {
+		return total_number_of_permutations(this.elements.length);
 	}
 
 	output_with_repetition(num?:number): Permutations<T> {
