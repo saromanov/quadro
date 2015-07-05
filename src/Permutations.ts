@@ -14,28 +14,7 @@ export class Permutations<T> extends model.ElementModel<T>{
 
 	//return list of all permutations
 	all_permutations(): T[][]{
-		let total = total_number_of_permutations(this.elements.length);
-		var results:T[][] = [];
-		let permHeap = (elements: T[], num: number) => {
-			if(num == 1){
-				results.push(elements.slice(0));
-			}
-			for(var i = 0;i < num;++i) {
-				permHeap(elements, num-1);
-				if(num % 2 == 0) {
-					let tmp = elements[i];
-					elements[i] = elements[num-1];
-					elements[num-1] = tmp;
-				} else {
-					let tmp = elements[0];
-					elements[0] = elements[num-1];
-					elements[num-1] = tmp;
-				}
-			}
-
-		}
-		permHeap(this.elements, this.elements.length);
-		return results;
+		return perms(this.elements, this.elements.length);
 	}
 
 	total_num_of_permutations():number {
@@ -79,3 +58,32 @@ function total_number_of_permutations(num:number): number {
 
 	return result;
 }
+
+function perms<T>(elements:T[], len: number, single=false):T[][] {
+   	var results:T[][] = [];
+	let permHeap = (elements: T[], num: number) => {
+		if(num == 1){
+			results.push(elements.slice(0));
+		}
+		for(var i = 0;i < num;++i) {
+			if (!single) {
+				permHeap(elements, num-1);
+			}
+			if(num % 2 == 0) {
+				let tmp = elements[i];
+				elements[i] = elements[num-1];
+				elements[num-1] = tmp;
+			} else {
+				let tmp = elements[0];
+				elements[0] = elements[num-1];
+				elements[num-1] = tmp;
+			}
+		}
+		if (single){
+			results.push(elements.slice(0));
+	   	}
+
+	}
+	permHeap(elements, len);
+	return results;
+} 
