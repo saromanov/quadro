@@ -41,16 +41,18 @@ http://groupprops.subwiki.org/wiki/Symmetric_group:S4
 export class SymmetricGroup{
     private degree: number;
     private elements: number[][];
-    private ordernum: number
+    private ordernum: number;
+    private listelements: number[];
 
     private constructElements(degree: number): number[][] {
         var list:Array<number> = [];
-        for(let i = 0;i < degree;++i){
+        for(let i = 1;i <= degree;++i){
             list.push(i);
         }
 
         let perm = new permutations.Permutations<number>(list);
         this.ordernum = perm.total_num_of_permutations();
+        this.listelements = list;
         return perm.all_permutations();
     }
     constructor(degree: number) {
@@ -62,5 +64,30 @@ export class SymmetricGroup{
     order(): number {
         return this.ordernum;
     }
+
+    //Exponent of the group
+    exponent(): number {
+        let item = lcm(this.listelements[0],this.listelements[1]);
+        for (let i = 2; i < this.listelements.length;++i) {
+            item = lcm(item, this.listelements[i]);
+        }
+        return item;
+    }
 }
 
+function lcm(num1: number, num2: number): number {
+    return num1 * num2/gcd(num1, num2);
+}
+
+function gcd(num1: number, num2: number): number {
+    if(num1 == undefined || num2 == undefined){
+        return 0;
+    }
+    let tmp: number;
+    while(num1 != 0) {
+        tmp = num1;
+        num1 = num2 % num1;
+        num2 = tmp;
+    }
+    return num2;
+}
