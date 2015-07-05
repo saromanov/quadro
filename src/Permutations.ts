@@ -6,9 +6,36 @@ export class Permutations<T> extends model.ElementModel<T>{
 		super(elems);
 	}
 
+	//Simple permutation of elements
 	perm(num?:number): Permutations<T> {
 		let permnum = num || this.elements.length;
-		return new Permutations(Heap_gen(this.elements, permnum));
+		return new Permutations(this.elements);
+	}
+
+	//return list of all permutations
+	all_permutations(): T[][]{
+		let total = total_number_of_permutations(this.elements.length);
+		var results:T[][] = [];
+		let permHeap = (elements: T[], num: number) => {
+			if(num == 1){
+				results.push(elements.slice(0));
+			}
+			for(var i = 0;i < num;++i) {
+				permHeap(elements, num-1);
+				if(num % 2 == 0) {
+					let tmp = elements[i];
+					elements[i] = elements[num-1];
+					elements[num-1] = tmp;
+				} else {
+					let tmp = elements[0];
+					elements[0] = elements[num-1];
+					elements[num-1] = tmp;
+				}
+			}
+
+		}
+		permHeap(this.elements, this.elements.length);
+		return results;
 	}
 
 	output_with_repetition(num?:number): Permutations<T> {
@@ -32,38 +59,19 @@ export class Permutations<T> extends model.ElementModel<T>{
 	}
 }
 
-
-function Heap_gen<T>(elements: T[], num:number): T[] {
-	if(num <= 1){
-		return elements;
-	}
-	for(var i = 0;i < num-1;++i) {
-		Heap_gen(elements, num-1);
-		if(num % 2 == 0) {
-			var res = swap(elements[i], elements[num-1]);
-			elements[i] = res[0];
-			elements[num-1] = res[1];
-		} else {
-			var res = swap(elements[0], elements[num-1]);
-			elements[0] = res[0];
-			elements[num-1] = res[1];
-		}
-	}
-
-	return Heap_gen(elements, num-1);
-}
-
-function swap<T>(elem1: T, elem2: T): T[] {
-	let tmp = elem2;
-	elem2 = elem1;
-	elem1 = tmp;
-	return [elem1, elem2];
-}
-
 function rand_vector(num: number, bound: number):number[] {
 	let res = [];
 	for(let i = 0;i < num;++i) {
 		res.push(Math.floor((Math.random() * bound) + 1)); 
 	}
 	return res;
+}
+
+function total_number_of_permutations(num:number): number {
+	let result: number = 1;
+	for(let i = 1;i <= num;++i) {
+		result*= i;
+	}
+
+	return result;
 }
