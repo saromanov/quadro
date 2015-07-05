@@ -5,7 +5,7 @@ Work in progress
 ## Usage
 
 ### Permutations
-Simple permutation
+SIngle permutation
 
 ```javascript
 var perm = new quadro.Permutations([7,4,5,8]);
