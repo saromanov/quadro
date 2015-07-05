@@ -9,7 +9,7 @@ export class Permutations<T> extends model.ElementModel<T>{
 	//Single permutation of elements
 	perm(num?:number): Permutations<T> {
 		let permnum = num || this.elements.length;
-		return new Permutations(this.elements);
+		return new Permutations(perms(this.elements, this.elements.length, true)[0]);
 	}
 
 	//return list of all permutations
