@@ -18,6 +18,19 @@ var perm = new quadro.Permutations([7,4,5,8]);
 console.log(perm.output_with_repetition().output()); //[ 7, 8, 7, 5 ]
 ```
 
+All possible permutations
+```javascript
+var perm = new quadro.Permutations([7,4,5,8]);
+console.log(perm.all_permutations());
+/*[ [ 5, 8, 7, 4 ],
+  [ 8, 5, 7, 4 ],
+  [ 7, 5, 8, 4 ],
+  [ 5, 7, 8, 4 ],
+  ...
+*/
+```
+
+
 Multiplication of permutations
 ```javascript
 var perm = new quadro.Permutations([7,4,5,8]);
