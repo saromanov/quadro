@@ -40,7 +40,7 @@ http://groupprops.subwiki.org/wiki/Symmetric_group:S4
 */
 export class SymmetricGroup{
     private degree: number;
-    private elements: number[][];
+    private items: number[][];
     private ordernum: number;
     private listelements: number[];
 
@@ -58,7 +58,7 @@ export class SymmetricGroup{
     constructor(degree: number) {
         this.degree = degree;
         //console.log(new Permutations.Permutations([1,2,3]));
-        this.elements = this.constructElements(degree);
+        this.items = this.constructElements(degree);
     }
 
     order(): number {
@@ -72,6 +72,10 @@ export class SymmetricGroup{
             item = lcm(item, this.listelements[i]);
         }
         return item;
+    }
+
+    elements(): number[][] {
+        return this.items;
     }
 }
 
