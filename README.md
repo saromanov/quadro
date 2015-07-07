@@ -44,3 +44,18 @@ var symm4 = new quadro.SymmetricGroup(4);
 console.log(symm4.order()); //6
 console.log(symm4.exponent()); //6
 ```
+
+### Monoids
+Monoid number
+```javascript
+var monoidnum = new quadro.MonoidNumber(function(x){return x;});
+monoidnum.mappend(4,7,5);
+```
+
+Monoid List
+```javascript
+var monoidlist = new quadro.MonoidNumber();
+monoidnum.mappend([1,2,3],[4,5,6]);//[1,2,3,4,5,6]
+```
+
+
