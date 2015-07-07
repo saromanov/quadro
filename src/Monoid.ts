@@ -5,37 +5,31 @@ class ZeroItem<T> {
 	}
 }
 
-export class Monoid<T>{
-    protected values:T[]
-    constructor(values:T[]){
-        this.values = values;
-    }
-    zero():ZeroItem<T> {
-        return new ZeroItem<T>();
-    }
-
-    multiply(item:T):Monoid<T> {
-        return new Monoid(this.values.concat(item));
-    }
-
-    result():T[] {
-    	return this.values;
-    }
+export interface Monoid<T> {
+    mempty():Monoid<T>
+    mappend(...args:T[]): Monoid<T>
 }
 
-export class MonoidNumber{
+
+export class MonoidNumber implements Monoid<number>{
     private mult: (a:number) => number;
     private zero: number = 0;
-    constructor(mult: (a:number) => number) {
+    constructor(mult: (a:number) => number, private data?:number) {
         this.mult = mult;
+        this.data = data;
+    }
+    mempty(): Monoid<number> {
+        return new MonoidNumber(this.mult, this.zero);
     }
 
-    mappend(...args:number[]): number {
+    mappend(...args:number[]): Monoid<number> {
         let result = this.zero;
+        console.log(this.data)
         args.forEach(x => {
             result += this.mult(x);
         });
 
-        return result;
+        return new MonoidNumber(this.mult, result);
     }
 }
+

@@ -198,27 +198,16 @@ var ZeroItem = (function () {
     }
     return ZeroItem;
 })();
-var Monoid = (function () {
-    function Monoid(values) {
-        this.values = values;
-    }
-    Monoid.prototype.zero = function () {
-        return new ZeroItem();
-    };
-    Monoid.prototype.multiply = function (item) {
-        return new Monoid(this.values.concat(item));
-    };
-    Monoid.prototype.result = function () {
-        return this.values;
-    };
-    return Monoid;
-})();
-exports.Monoid = Monoid;
 var MonoidNumber = (function () {
-    function MonoidNumber(mult) {
+    function MonoidNumber(mult, data) {
+        this.data = data;
         this.zero = 0;
         this.mult = mult;
+        this.data = data;
     }
+    MonoidNumber.prototype.mempty = function () {
+        return new MonoidNumber(this.mult, this.zero);
+    };
     MonoidNumber.prototype.mappend = function () {
         var _this = this;
         var args = [];
@@ -226,10 +215,11 @@ var MonoidNumber = (function () {
             args[_i - 0] = arguments[_i];
         }
         var result = this.zero;
+        console.log(this.data);
         args.forEach(function (x) {
             result += _this.mult(x);
         });
-        return result;
+        return new MonoidNumber(this.mult, result);
     };
     return MonoidNumber;
 })();
