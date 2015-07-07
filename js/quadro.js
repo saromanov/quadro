@@ -25,6 +25,53 @@ var ElementModel = (function () {
 })();
 exports.ElementModel = ElementModel;
 
+var __extends = this.__extends || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+var Either = (function () {
+    function Either(l, r) {
+        this.leftvalue = l;
+        this.rightvalue = r;
+    }
+    Either.prototype.check = function (side, value) {
+        if (side == "left" && typeof value == typeof this.leftvalue) {
+            return new Left(value);
+        }
+        if (side == "right" && typeof value == typeof this.rightvalue) {
+            return new Right(value);
+        }
+    };
+    return Either;
+})();
+exports.Either = Either;
+var Side = (function () {
+    function Side(item) {
+        this.name = "";
+    }
+    return Side;
+})();
+var Right = (function (_super) {
+    __extends(Right, _super);
+    function Right(item) {
+        _super.call(this, item);
+        this.name = "right";
+        this.item = item;
+    }
+    return Right;
+})(Side);
+var Left = (function (_super) {
+    __extends(Left, _super);
+    function Left(item) {
+        _super.call(this, item);
+        this.name = "left";
+        this.item = item;
+    }
+    return Left;
+})(Side);
+
 var Functor = (function () {
     function Functor(elems) {
         this.elements = elems;
