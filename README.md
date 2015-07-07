@@ -58,4 +58,6 @@ var monoidlist = new quadro.MonoidNumber();
 monoidnum.mappend([1,2,3],[4,5,6]);//[1,2,3,4,5,6]
 ```
 
+### Either
+
 
