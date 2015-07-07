@@ -22,3 +22,20 @@ export class Monoid<T>{
     	return this.values;
     }
 }
+
+export class MonoidNumber{
+    private mult: (a:number) => number;
+    private zero: number = 0;
+    constructor(mult: (a:number) => number) {
+        this.mult = mult;
+    }
+
+    mappend(...args:number[]): number {
+        let result = this.zero;
+        args.forEach(x => {
+            result += this.mult(x);
+        });
+
+        return result;
+    }
+}
