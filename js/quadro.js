@@ -224,6 +224,29 @@ var MonoidNumber = (function () {
     return MonoidNumber;
 })();
 exports.MonoidNumber = MonoidNumber;
+var MonoidList = (function () {
+    function MonoidList(data) {
+        this.data = data;
+        this.zero = [];
+        this.data = data;
+    }
+    MonoidList.prototype.mempty = function () {
+        return new MonoidList(this.zero);
+    };
+    MonoidList.prototype.mappend = function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i - 0] = arguments[_i];
+        }
+        var result = this.zero;
+        args.forEach(function (x) {
+            result.concat(x);
+        });
+        return new MonoidList(result);
+    };
+    return MonoidList;
+})();
+exports.MonoidList = MonoidList;
 
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];

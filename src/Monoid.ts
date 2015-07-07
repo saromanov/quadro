@@ -33,3 +33,23 @@ export class MonoidNumber implements Monoid<number>{
     }
 }
 
+
+export class MonoidList<T> implements Monoid<T[]> {
+    private zero: T[] = [];
+    constructor(private data?:T[]){
+        this.data = data;
+    }
+
+    mempty(): Monoid<T[]> {
+        return new MonoidList<T>(this.zero);
+    }
+
+    mappend(...args:T[][]): Monoid<T[]> {
+        let result = this.zero;
+        args.forEach(x => {
+            result.concat(x);
+        });
+
+        return new MonoidList<T>(result);
+    }
+}
