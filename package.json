@@ -30,5 +30,8 @@
     "typescript": "~1.4.1",
     "typescript-formatter": "^0.2.2"
   },
-  "homepage": "https://github.com/saromanov/quadro#readme"
+  "homepage": "https://github.com/saromanov/quadro#readme",
+  "dependencies": {
+    "underscore": "^1.8.3"
+  }
 }
