@@ -173,6 +173,14 @@ var SymmetricGroup = (function () {
     SymmetricGroup.prototype.elements = function () {
         return this.items;
     };
+    SymmetricGroup.prototype.is_complete = function () {
+        if (this.degree >= 3 && this.degree <= 5) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
     return SymmetricGroup;
 })();
 exports.SymmetricGroup = SymmetricGroup;

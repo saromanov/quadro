@@ -78,6 +78,15 @@ export class SymmetricGroup{
     elements(): number[][] {
         return this.items;
     }
+
+    is_complete():boolean {
+        if(this.degree >=3 && this.degree <= 5) {
+            return true;
+        }
+         else {
+            return false;
+         }
+    }
 }
 
 export class CyclicGroup {
