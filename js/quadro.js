@@ -196,6 +196,13 @@ var CyclicGroup = (function () {
     return CyclicGroup;
 })();
 exports.CyclicGroup = CyclicGroup;
+//https://en.wikipedia.org/wiki/Quaternion_group
+var QuaternionGroup = (function () {
+    function QuaternionGroup() {
+    }
+    return QuaternionGroup;
+})();
+exports.QuaternionGroup = QuaternionGroup;
 function lcm(num1, num2) {
     return num1 * num2 / gcd(num1, num2);
 }

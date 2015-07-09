@@ -103,6 +103,14 @@ export class CyclicGroup {
     }
 }
 
+//https://en.wikipedia.org/wiki/Quaternion_group
+export class QuaternionGroup {
+    private items: string[];
+    constructor(){
+
+    }
+}
+
 function lcm(num1: number, num2: number): number {
     return num1 * num2/gcd(num1, num2);
 }
