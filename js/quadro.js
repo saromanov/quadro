@@ -176,6 +176,18 @@ var SymmetricGroup = (function () {
     return SymmetricGroup;
 })();
 exports.SymmetricGroup = SymmetricGroup;
+var CyclicGroup = (function () {
+    function CyclicGroup(n) {
+        this.n = n;
+        var elems = range(n);
+        this.items = generate(elems);
+    }
+    CyclicGroup.prototype.elements = function () {
+        return this.items;
+    };
+    return CyclicGroup;
+})();
+exports.CyclicGroup = CyclicGroup;
 function lcm(num1, num2) {
     return num1 * num2 / gcd(num1, num2);
 }
@@ -190,6 +202,26 @@ function gcd(num1, num2) {
         num2 = tmp;
     }
     return num2;
+}
+function generate(items) {
+    var cycle = items;
+    cycle = cycle.concat(cycle.slice(0, items.length - 1));
+    var result = [];
+    items.forEach(function (x) {
+        var tmp = [];
+        for (var i = x; i < items.length + x; ++i) {
+            tmp.push(cycle[i]);
+        }
+        result.push(tmp);
+    });
+    return result;
+}
+function range(n) {
+    var result = [];
+    for (var i = 0; i < n; ++i) {
+        result.push(i);
+    }
+    return result;
 }
 
 var ZeroItem = (function () {

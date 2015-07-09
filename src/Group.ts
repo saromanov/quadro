@@ -1,6 +1,7 @@
 import Abstract = require('./Abstract');
 import permutations = require('./Permutations');
 
+
 //Definition of group
 export class Group{
     protected elements: number[];
@@ -79,6 +80,20 @@ export class SymmetricGroup{
     }
 }
 
+export class CyclicGroup {
+    private n: number;
+    private items: number[][];
+    constructor(n: number){
+        this.n = n;
+        let elems = range(n);
+        this.items = generate(elems);
+    }
+
+    elements(): number[][] {
+        return this.items;
+    }
+}
+
 function lcm(num1: number, num2: number): number {
     return num1 * num2/gcd(num1, num2);
 }
@@ -94,4 +109,27 @@ function gcd(num1: number, num2: number): number {
         num2 = tmp;
     }
     return num2;
+}
+
+function generate(items: number[]): number[][] {
+    let cycle = items;
+    cycle = cycle.concat(cycle.slice(0, items.length-1));
+    let result = [];
+    items.forEach(x => {
+        let tmp = [];
+        for(let i = x;i < items.length+x;++i) {
+            tmp.push(cycle[i]);
+        }
+        result.push(tmp);
+    });
+
+    return result;
+}
+
+function range(n:number): number[] {
+    let result = [];
+    for(let i = 0;i < n;++i) {
+        result.push(i);
+    }
+    return result;
 }
