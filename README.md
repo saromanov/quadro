@@ -61,3 +61,11 @@ monoidnum.mappend([1,2,3],[4,5,6]);//[1,2,3,4,5,6]
 ### Either
 
 
+## Combinations
+Basic formulas from combinatorics
+
+Binomial coefficient:
+```javascript
+var combi = new quadro.Combinations();
+combi.binomial(7,2); //21
+```
