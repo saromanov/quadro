@@ -25,6 +25,33 @@ var ElementModel = (function () {
 })();
 exports.ElementModel = ElementModel;
 
+//Combinations provides implementation of basic combinatorics formulas
+var Combinations = (function () {
+    function Combinations() {
+    }
+    //Binomial coefficient
+    Combinations.prototype.binomial = function (n, k) {
+        if (n < k) {
+            return 0;
+        }
+        return factorial(n) / (factorial(k) * factorial(n - k));
+    };
+    return Combinations;
+})();
+exports.Combinations = Combinations;
+var factorial = function (n) {
+    if (n == 0) {
+        return 0;
+    }
+    if (n == 1) {
+        return 1;
+    }
+    var result = 1;
+    for (var i = 1; i <= n; ++i) {
+        result *= i;
+    }
+    return result;
+};
 
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
