@@ -221,6 +221,9 @@ var CyclicGroup = (function () {
     CyclicGroup.prototype.elements = function () {
         return this.items;
     };
+    CyclicGroup.prototype.is_abelian = function () {
+        return true;
+    };
     return CyclicGroup;
 })();
 exports.CyclicGroup = CyclicGroup;

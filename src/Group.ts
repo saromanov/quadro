@@ -101,6 +101,10 @@ export class CyclicGroup {
     elements(): number[][] {
         return this.items;
     }
+
+    is_abelian():boolean {
+        return true;
+    }
 }
 
 //https://en.wikipedia.org/wiki/Quaternion_group
