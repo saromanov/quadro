@@ -5,8 +5,11 @@ interface Ring<T> {
 }
 
 export class NumRing implements Ring<number> {
+	private zero:number;
+	private one:number;
 	constructor(){
-
+		this.zero = 0;
+		this.one = 1;
 	}
 
 	add(one:number, second:number){

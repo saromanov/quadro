@@ -442,6 +442,8 @@ function perms(elements, len, single) {
 
 var NumRing = (function () {
     function NumRing() {
+        this.zero = 0;
+        this.one = 1;
     }
     NumRing.prototype.add = function (one, second) {
         return one + second;
