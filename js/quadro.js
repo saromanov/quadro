@@ -25,6 +25,7 @@ var ElementModel = (function () {
 })();
 exports.ElementModel = ElementModel;
 
+
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -411,6 +412,19 @@ function perms(elements, len, single) {
     permHeap(elements, len);
     return results;
 }
+
+var NumRing = (function () {
+    function NumRing() {
+    }
+    NumRing.prototype.add = function (one, second) {
+        return one + second;
+    };
+    NumRing.prototype.multiply = function (one, second) {
+        return one * second;
+    };
+    return NumRing;
+})();
+exports.NumRing = NumRing;
 
 var Semigroup = (function () {
     function Semigroup(left, right) {

@@ -4,7 +4,7 @@ interface Ring<T> {
 	multiply(one:T, second:T)
 }
 
-class NumRing implements Ring<number> {
+export class NumRing implements Ring<number> {
 	constructor(){
 
 	}
