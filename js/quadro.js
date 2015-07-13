@@ -293,7 +293,6 @@ var MonoidNumber = (function () {
             args[_i - 0] = arguments[_i];
         }
         var result = this.zero;
-        console.log(this.data);
         args.forEach(function (x) {
             result += _this.mult(x);
         });
@@ -443,19 +442,28 @@ function perms(elements, len, single) {
     return results;
 }
 
-var NumRing = (function () {
+var __extends = this.__extends || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+var Semigroup = require('./Semigroup');
+var NumRing = (function (_super) {
+    __extends(NumRing, _super);
     function NumRing() {
+        _super.call(this);
         this.zero = 0;
         this.one = 1;
     }
-    NumRing.prototype.add = function (one, second) {
+    NumRing.prototype.plus = function (one, second) {
         return one + second;
     };
     NumRing.prototype.multiply = function (one, second) {
         return one * second;
     };
     return NumRing;
-})();
+})(Semigroup.SemigroupNumber);
 exports.NumRing = NumRing;
 
 //Example semigroup with natural numbers
@@ -463,7 +471,9 @@ var SemigroupNumber = (function () {
     function SemigroupNumber() {
     }
     SemigroupNumber.prototype.plus = function (n1, n2) {
-        return n1 + n2;
+        if (n1 != 0 && n2 != 0) {
+            return n1 + n2;
+        }
     };
     return SemigroupNumber;
 })();
