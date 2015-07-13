@@ -5,7 +5,13 @@ export class SemigroupNumber {
 
 	}
 
-	plus(n1:number, n2:number){
-		return n1 + n2;
+	product(n1:number, n2:number){
+
+	}
+
+	plus(n1:number, n2:number): number{
+		if(n1 > 0 && n2 > 0){
+			return n1 + n2;
+		}
 	}
 }

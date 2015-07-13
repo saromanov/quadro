@@ -324,6 +324,29 @@ var MonoidList = (function () {
     return MonoidList;
 })();
 exports.MonoidList = MonoidList;
+var MonoidString = (function () {
+    function MonoidString(data) {
+        this.data = data;
+        this.zero = "";
+        this.data = data;
+    }
+    MonoidString.prototype.mempty = function () {
+        return new MonoidString(this.zero);
+    };
+    MonoidString.prototype.mappend = function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i - 0] = arguments[_i];
+        }
+        var result = this.zero;
+        args.forEach(function (x) {
+            result += x;
+        });
+        return new MonoidString(result);
+    };
+    return MonoidString;
+})();
+exports.MonoidString = MonoidString;
 
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -470,8 +493,10 @@ exports.NumRing = NumRing;
 var SemigroupNumber = (function () {
     function SemigroupNumber() {
     }
+    SemigroupNumber.prototype.product = function (n1, n2) {
+    };
     SemigroupNumber.prototype.plus = function (n1, n2) {
-        if (n1 != 0 && n2 != 0) {
+        if (n1 > 0 && n2 > 0) {
             return n1 + n2;
         }
     };
