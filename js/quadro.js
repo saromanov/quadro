@@ -504,4 +504,17 @@ var Utils;
         return result;
     }
     Utils.power = power;
+    function mod_power(g, p, mod) {
+        var result = 1.0;
+        g = g % mod;
+        while (p > 0) {
+            if (p % 2 == 1) {
+                result = (result * g) % mod;
+            }
+            p = p >> 1;
+            g = (g * g) % mod;
+        }
+        return result;
+    }
+    Utils.mod_power = mod_power;
 })(Utils = exports.Utils || (exports.Utils = {}));
