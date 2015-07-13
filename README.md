@@ -69,3 +69,9 @@ Binomial coefficient:
 var combi = new quadro.Combinations();
 combi.binomial(7,2); //21
 ```
+
+## Utils
+fast exponentiation
+```javascript
+console.log(quadro.Utils.power(5,4)) //625
+```
