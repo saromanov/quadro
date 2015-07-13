@@ -458,14 +458,16 @@ var NumRing = (function () {
 })();
 exports.NumRing = NumRing;
 
-var Semigroup = (function () {
-    function Semigroup(left, right) {
-        this.left = left;
-        this.right = right;
+//Example semigroup with natural numbers
+var SemigroupNumber = (function () {
+    function SemigroupNumber() {
     }
-    return Semigroup;
+    SemigroupNumber.prototype.plus = function (n1, n2) {
+        return n1 + n2;
+    };
+    return SemigroupNumber;
 })();
-exports.Semigroup = Semigroup;
+exports.SemigroupNumber = SemigroupNumber;
 
 var Set = (function () {
     function Set(values) {

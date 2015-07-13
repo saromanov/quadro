@@ -1,8 +1,11 @@
-export class Semigroup {
-	private left:number;
-	private right: number;
-	constructor(left:number, right:number) {
-		this.left = left;
-		this.right = right;
+
+//Example semigroup with natural numbers
+export class SemigroupNumber {
+	constructor() {
+
+	}
+
+	plus(n1:number, n2:number){
+		return n1 + n2;
 	}
 }
