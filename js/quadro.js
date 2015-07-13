@@ -488,3 +488,20 @@ var Set = (function () {
     return Set;
 })();
 exports.Set = Set;
+
+var Utils;
+(function (Utils) {
+    function power(x, n) {
+        var result = 1.0;
+        while (n != 0) {
+            if (n % 2 != 0) {
+                result *= x;
+                n -= 1;
+            }
+            x *= x;
+            n /= 2;
+        }
+        return result;
+    }
+    Utils.power = power;
+})(Utils = exports.Utils || (exports.Utils = {}));
