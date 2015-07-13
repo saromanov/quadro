@@ -73,5 +73,8 @@ combi.binomial(7,2); //21
 ## Utils
 fast exponentiation
 ```javascript
-console.log(quadro.Utils.power(5,4)) //625
+console.log(quadro.Utils.power(5,4)); //625
 ```
+Modular exponentiation
+```javascript
+console.log(quadro.Utils.mod_power(4,13,497)); //445
