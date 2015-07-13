@@ -24,7 +24,6 @@ export class MonoidNumber implements Monoid<number>{
 
     mappend(...args:number[]): Monoid<number> {
         let result = this.zero;
-        console.log(this.data)
         args.forEach(x => {
             result += this.mult(x);
         });
@@ -51,5 +50,25 @@ export class MonoidList<T> implements Monoid<T[]> {
         });
 
         return new MonoidList<T>(result);
+    }
+}
+
+export class MonoidString implements Monoid<string> {
+    private zero: string = "";
+    constructor(private data?:string){
+        this.data = data;
+    }
+
+    mempty(): Monoid<string> {
+        return new MonoidString(this.zero);
+    }
+
+    mappend(...args:string[]): Monoid<string>{
+        let result = this.zero;
+        args.forEach(x => {
+            result += x;
+        });
+
+        return new MonoidString(result);
     }
 }
