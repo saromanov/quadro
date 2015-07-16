@@ -72,6 +72,12 @@ var Either = (function () {
             return new Right(value);
         }
     };
+    Either.prototype.left = function (value) {
+        return new Left(value);
+    };
+    Either.prototype.right = function (value) {
+        return new Right(value);
+    };
     return Either;
 })();
 exports.Either = Either;

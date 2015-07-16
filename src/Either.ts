@@ -15,6 +15,14 @@ export class Either<L, R> {
 			return new Right(value);
 		}
 	}
+
+	left(value:L):Side<L>{
+		return new Left<L>(value);
+	}
+
+	right(value:R):Side<R>{
+		return new Right<R>(value);
+	}
 }
 
 
