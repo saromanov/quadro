@@ -45,6 +45,12 @@ console.log(symm4.order()); //6
 console.log(symm4.exponent()); //6
 ```
 
+* Abelian group
+* Constant group
+* SymmetricGroup
+* CyclicGroup
+
+
 ### Monoids
 Monoid number
 ```javascript
