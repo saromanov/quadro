@@ -1,12 +1,13 @@
 import Abstract = require('./Abstract');
 import permutations = require('./Permutations');
-
+import Quasigroup = require('./Quasigroup')
 
 //Definition of group
-export class Group{
+export class Group extends Quasigroup.Quasigroup<number> {
     protected elements: number[];
     constructor(elems: number[]){
     	this.elements = elems;
+        super(elems)
     }
 }
 

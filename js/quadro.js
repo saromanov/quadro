@@ -141,13 +141,16 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var permutations = require('./Permutations');
+var Quasigroup = require('./Quasigroup');
 //Definition of group
-var Group = (function () {
+var Group = (function (_super) {
+    __extends(Group, _super);
     function Group(elems) {
         this.elements = elems;
+        _super.call(this, elems);
     }
     return Group;
-})();
+})(Quasigroup.Quasigroup);
 exports.Group = Group;
 var SimpleGroup = (function (_super) {
     __extends(SimpleGroup, _super);
@@ -470,6 +473,14 @@ function perms(elements, len, single) {
     permHeap(elements, len);
     return results;
 }
+
+var Quasigroup = (function () {
+    function Quasigroup(data) {
+        this.data = data;
+    }
+    return Quasigroup;
+})();
+exports.Quasigroup = Quasigroup;
 
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
