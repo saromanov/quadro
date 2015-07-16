@@ -1,18 +1,15 @@
 //Construct abelian group
-var Abelian = (function () {
-    function Abelian(elems) {
+var AbelianGroup = (function () {
+    function AbelianGroup(elems) {
         this.elems = elems;
         this.elements = elems;
     }
-    Abelian.prototype.get_elements = function () {
+    AbelianGroup.prototype.get_elements = function () {
         return this.elements;
     };
-    Abelian.prototype.is_commutativity = function (item1, item2) {
-        return item1 * item2 == item2 * item1;
-    };
-    return Abelian;
+    return AbelianGroup;
 })();
-exports.Abelian = Abelian;
+exports.AbelianGroup = AbelianGroup;
 
 var ElementModel = (function () {
     function ElementModel(elems) {
