@@ -1,3 +1,5 @@
+
+//Basic functor for list
 export class Functor<T, Y>{
     protected elements: T[];
     constructor (elems: T[]){
