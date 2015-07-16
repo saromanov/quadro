@@ -9,4 +9,13 @@ export class AbelianGroup<T> {
 	get_elements():T[] {
 		return this.elements;
 	}
+
+	plus(elements: T[]){
+		if(elements.length == 0){
+			return
+		}
+		for(let i = 0;i < elements.length;++i){
+			this.elements.push(elements[i]);
+		}
+	}
 }

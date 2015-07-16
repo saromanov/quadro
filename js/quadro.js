@@ -7,6 +7,14 @@ var AbelianGroup = (function () {
     AbelianGroup.prototype.get_elements = function () {
         return this.elements;
     };
+    AbelianGroup.prototype.plus = function (elements) {
+        if (elements.length == 0) {
+            return;
+        }
+        for (var i = 0; i < elements.length; ++i) {
+            this.elements.push(elements[i]);
+        }
+    };
     return AbelianGroup;
 })();
 exports.AbelianGroup = AbelianGroup;
