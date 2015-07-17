@@ -26,7 +26,7 @@ export module Utils{
   }
 
   export function range(start: number, end:number){
-  	let result: number[];
+  	let result: number[] = [];
   	for(let i = start; i < end;++i){
   		result.push(i);
   	}
