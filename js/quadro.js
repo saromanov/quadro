@@ -30,6 +30,15 @@ var ElementModel = (function () {
 })();
 exports.ElementModel = ElementModel;
 
+//Norms in Banach space
+//https://en.wikipedia.org/wiki/List_of_Banach_spaces
+var BanachSpace = (function () {
+    function BanachSpace() {
+    }
+    return BanachSpace;
+})();
+exports.BanachSpace = BanachSpace;
+
 //Combinations provides implementation of basic combinatorics formulas
 var Combinations = (function () {
     function Combinations() {
@@ -607,6 +616,9 @@ var Vector = (function () {
                 return _this.elements[x] - elements[x];
             }));
         }
+    };
+    Vector.prototype.sum = function () {
+        return this.elements.reduce(function (x, y) { return x + y; });
     };
     Vector.prototype.items = function () {
         return this.elements;

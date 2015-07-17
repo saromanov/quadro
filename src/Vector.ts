@@ -20,6 +20,10 @@ export class Vector{
 		}
 	}
 
+	sum(): number{
+		return this.elements.reduce((x, y) => x + y);
+	}
+
 	items():number[] {
 		return this.elements;
 	}
