@@ -111,6 +111,7 @@ var Left = (function (_super) {
     return Left;
 })(Side);
 
+//Basic functor for list
 var Functor = (function () {
     function Functor(elems) {
         this.elements = elems;
@@ -576,4 +577,13 @@ var Utils;
         return result;
     }
     Utils.mod_power = mod_power;
+    function range(start, end) {
+        var result;
+        for (var i = start; i < end; ++i) {
+            result.push(i);
+        }
+        return result;
+    }
+    Utils.range = range;
 })(Utils = exports.Utils || (exports.Utils = {}));
+
