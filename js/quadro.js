@@ -578,7 +578,7 @@ var Utils;
     }
     Utils.mod_power = mod_power;
     function range(start, end) {
-        var result;
+        var result = [];
         for (var i = start; i < end; ++i) {
             result.push(i);
         }
@@ -587,3 +587,30 @@ var Utils;
     Utils.range = range;
 })(Utils = exports.Utils || (exports.Utils = {}));
 
+var Util = require('./Utils');
+var Vector = (function () {
+    function Vector(elements) {
+        this.elements = elements;
+    }
+    Vector.prototype.add = function (elements) {
+        var _this = this;
+        if (this.elements.length == elements.length) {
+            return new Vector(Util.Utils.range(0, this.elements.length).map(function (x) {
+                return _this.elements[x] + elements[x];
+            }));
+        }
+    };
+    Vector.prototype.sub = function (elements) {
+        var _this = this;
+        if (this.elements.length == elements.length) {
+            return new Vector(Util.Utils.range(0, this.elements.length).map(function (x) {
+                return _this.elements[x] - elements[x];
+            }));
+        }
+    };
+    Vector.prototype.items = function () {
+        return this.elements;
+    };
+    return Vector;
+})();
+exports.Vector = Vector;
