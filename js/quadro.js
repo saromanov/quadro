@@ -30,14 +30,27 @@ var ElementModel = (function () {
 })();
 exports.ElementModel = ElementModel;
 
+var Vector = require('./Vector');
 //Norms in Banach space
 //https://en.wikipedia.org/wiki/List_of_Banach_spaces
 var BanachSpace = (function () {
     function BanachSpace() {
     }
+    BanachSpace.prototype.euclidean = function (vec) {
+        return Math.sqrt(new Vector.Vector(vec.items().map(function (x) { return x * x; })).sum());
+    };
+    BanachSpace.prototype.lp = function (vec, p) {
+        if (p == 0) {
+            return 0;
+        }
+        return cbrtn(new Vector.Vector(vec.items().map(function (x) { return Math.pow(x, p); })).sum(), p);
+    };
     return BanachSpace;
 })();
 exports.BanachSpace = BanachSpace;
+var cbrtn = function (num, p) {
+    return Math.pow(num, 1 / p);
+};
 
 //Combinations provides implementation of basic combinatorics formulas
 var Combinations = (function () {
@@ -608,6 +621,7 @@ var Vector = (function () {
                 return _this.elements[x] + elements[x];
             }));
         }
+        return new Vector([]);
     };
     Vector.prototype.sub = function (elements) {
         var _this = this;
@@ -616,6 +630,7 @@ var Vector = (function () {
                 return _this.elements[x] - elements[x];
             }));
         }
+        return new Vector([]);
     };
     Vector.prototype.sum = function () {
         return this.elements.reduce(function (x, y) { return x + y; });
