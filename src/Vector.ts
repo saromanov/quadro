@@ -11,6 +11,7 @@ export class Vector{
 			return new Vector(Util.Utils.range(0, this.elements.length).map(x => 
 				this.elements[x] + elements[x]))
 		}
+		return new Vector([]);
 	}
 
 	sub(elements: number[]): Vector {
@@ -18,6 +19,7 @@ export class Vector{
 			return new Vector(Util.Utils.range(0, this.elements.length).map(x => 
 				this.elements[x] - elements[x]))
 		}
+		return new Vector([]);
 	}
 
 	sum(): number{
