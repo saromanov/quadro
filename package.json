@@ -27,7 +27,7 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-typescript": "",
     "grunt-typescript-formatter": "^0.2.2",
-    "typescript": "~1.4.1",
+    "typescript": "~1.5",
     "typescript-formatter": "^0.2.2"
   },
   "homepage": "https://github.com/saromanov/quadro#readme",
