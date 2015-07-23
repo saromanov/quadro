@@ -8,6 +8,14 @@ export class Combinations {
 		}
 		return factorial(n)/(factorial(k) * factorial(n - k))
 	}
+
+	withoutRep(n:number, k:number){
+		if(n < k){
+			return 0;
+		}
+
+		return factorial(n)/factorial(n - k);
+	}
 }
 
 var factorial = function(n:number){

@@ -63,6 +63,12 @@ var Combinations = (function () {
         }
         return factorial(n) / (factorial(k) * factorial(n - k));
     };
+    Combinations.prototype.withoutRep = function (n, k) {
+        if (n < k) {
+            return 0;
+        }
+        return factorial(n) / factorial(n - k);
+    };
     return Combinations;
 })();
 exports.Combinations = Combinations;
