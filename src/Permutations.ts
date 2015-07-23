@@ -1,6 +1,10 @@
 import model= require('./Abstract')
 
-export class Permutations<T> extends model.ElementModel<T>{
+
+export {Permutations, PermutationsNum};
+
+
+class Permutations<T> extends model.ElementModel<T>{
 	protected elements: T[];
 	constructor(elems:T[]) {
 		super(elems);
@@ -42,7 +46,7 @@ export class Permutations<T> extends model.ElementModel<T>{
 	}
 }
 
-export class PermutationsNum extends Permutations<number> {
+class PermutationsNum extends Permutations<number> {
 	constructor(elements:number[]){
 		super(elements);
 		this.elements = elements;
