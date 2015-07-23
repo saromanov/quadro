@@ -464,6 +464,27 @@ var Permutations = (function (_super) {
     return Permutations;
 })(model.ElementModel);
 exports.Permutations = Permutations;
+var PermutationsNum = (function (_super) {
+    __extends(PermutationsNum, _super);
+    function PermutationsNum(elements) {
+        _super.call(this, elements);
+        this.elements = elements;
+    }
+    //Return permutation support
+    //This method return sorted list of elements
+    //where p_i != i
+    PermutationsNum.prototype.support = function () {
+        var result = [];
+        for (var i = 0; i < this.elements.length; ++i) {
+            if (this.elements[i] != i + 1) {
+                result.push(this.elements[i]);
+            }
+        }
+        return result.sort();
+    };
+    return PermutationsNum;
+})(Permutations);
+exports.PermutationsNum = PermutationsNum;
 function rand_vector(num, bound) {
     var res = [];
     for (var i = 0; i < num; ++i) {

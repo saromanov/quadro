@@ -42,6 +42,27 @@ export class Permutations<T> extends model.ElementModel<T>{
 	}
 }
 
+export class PermutationsNum extends Permutations<number> {
+	constructor(elements:number[]){
+		super(elements);
+		this.elements = elements;
+	}
+
+	//Return permutation support
+    //This method return sorted list of elements
+    //where p_i != i
+	support(): number[] {
+		let result = [];
+		for(let i = 0;i < this.elements.length;++i) {
+			if(this.elements[i] != i+1){
+				result.push(this.elements[i]);
+			}
+		}
+		return result.sort();
+	}
+
+}
+
 function rand_vector(num: number, bound: number):number[] {
 	let res = [];
 	for(let i = 0;i < num;++i) {
