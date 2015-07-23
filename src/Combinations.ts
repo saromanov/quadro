@@ -2,14 +2,14 @@
 //Combinations provides implementation of basic combinatorics formulas
 export class Combinations {
 	//Binomial coefficient
-	binomial(n:number, k:number){
+	binomial(n:number, k:number): number{
 		if(n < k){
 			return 0;
 		}
 		return factorial(n)/(factorial(k) * factorial(n - k))
 	}
 
-	withoutRep(n:number, k:number){
+	withoutRep(n:number, k:number):number{
 		if(n < k){
 			return 0;
 		}
