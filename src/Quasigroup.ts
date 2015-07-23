@@ -1,5 +1,6 @@
 
-export class Quasigroup<T> {
+export {Quasigroup};
+class Quasigroup<T> {
 	private data: T[];
 	constructor(data: T[]){
 		this.data = data;

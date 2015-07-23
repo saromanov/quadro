@@ -174,8 +174,8 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-var permutations = require('./Permutations');
-var Quasigroup = require('./Quasigroup');
+var Permutations_1 = require('./Permutations');
+var Quasigroup_1 = require('./Quasigroup');
 //Definition of group
 var Group = (function (_super) {
     __extends(Group, _super);
@@ -184,7 +184,7 @@ var Group = (function (_super) {
         _super.call(this, elems);
     }
     return Group;
-})(Quasigroup.Quasigroup);
+})(Quasigroup_1.Quasigroup);
 exports.Group = Group;
 var SimpleGroup = (function (_super) {
     __extends(SimpleGroup, _super);
@@ -225,7 +225,7 @@ var SymmetricGroup = (function () {
         for (var i = 1; i <= degree; ++i) {
             list.push(i);
         }
-        var perm = new permutations.Permutations(list);
+        var perm = new Permutations_1.Permutations(list);
         this.ordernum = perm.total_num_of_permutations();
         this.listelements = list;
         return perm.all_permutations();

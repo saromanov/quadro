@@ -1,9 +1,9 @@
 import Abstract = require('./Abstract');
-import permutations = require('./Permutations');
-import Quasigroup = require('./Quasigroup')
+import {Permutations} from './Permutations';
+import {Quasigroup} from './Quasigroup';
 
 //Definition of group
-export class Group extends Quasigroup.Quasigroup<number> {
+export class Group extends Quasigroup<number> {
     protected elements: number[];
     constructor(elems: number[]){
     	this.elements = elems;
@@ -52,7 +52,7 @@ export class SymmetricGroup{
             list.push(i);
         }
 
-        let perm = new permutations.Permutations<number>(list);
+        let perm = new Permutations<number>(list);
         this.ordernum = perm.total_num_of_permutations();
         this.listelements = list;
         return perm.all_permutations();
