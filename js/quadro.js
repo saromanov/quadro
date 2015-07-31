@@ -186,6 +186,7 @@ var Group = (function (_super) {
     return Group;
 })(Quasigroup_1.Quasigroup);
 exports.Group = Group;
+//SimpleGroup contains only negate
 var SimpleGroup = (function (_super) {
     __extends(SimpleGroup, _super);
     function SimpleGroup(elems) {
@@ -197,7 +198,7 @@ var SimpleGroup = (function (_super) {
     return SimpleGroup;
 })(Group);
 exports.SimpleGroup = SimpleGroup;
-//ConstantGroup is generalization of Trivial group
+//ConstantGroup is generalization of Trivial group and contains only one element
 var ConstantGroup = (function () {
     function ConstantGroup(element) {
         this.element = element;
@@ -263,6 +264,7 @@ var SymmetricGroup = (function () {
     return SymmetricGroup;
 })();
 exports.SymmetricGroup = SymmetricGroup;
+//CyclicGroup contains cyclic elements
 var CyclicGroup = (function () {
     function CyclicGroup(n) {
         this.n = n;
@@ -278,6 +280,7 @@ var CyclicGroup = (function () {
     return CyclicGroup;
 })();
 exports.CyclicGroup = CyclicGroup;
+//Generated Group gets function for generating elements of the group
 var GeneratedGroup = (function () {
     function GeneratedGroup(func) {
         this.func = func;
@@ -603,6 +606,11 @@ var Set = (function () {
     }
     Set.prototype.product = function (otherset) {
         return this.values.map(function (x) { return otherset.get_items().map(function (y) { return (x, y); }); });
+    };
+    Set.prototype.intersection = function (otherset) {
+        var _this = this;
+        var items = otherset.get_items();
+        return new Set(items.filter(function (x) { return _this.values.indexOf(x) != -1; }));
     };
     Set.prototype.get_items = function () {
         return this.values;
