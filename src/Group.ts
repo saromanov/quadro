@@ -116,6 +116,21 @@ export class CyclicGroup {
     }
 }
 
+export class GeneratedGroup {
+    private func:(x: number) => number; 
+    constructor(func:((x: number) => number)){
+        this.func = func;
+    }
+
+    generate(items: number[]):number[] {
+        if(items.length == 0){
+            return [0];
+        }
+
+        return items.map(this.func);
+    }
+}
+
 //https://en.wikipedia.org/wiki/Quaternion_group
 export class QuaternionGroup {
     private items: string[];

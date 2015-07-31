@@ -278,6 +278,19 @@ var CyclicGroup = (function () {
     return CyclicGroup;
 })();
 exports.CyclicGroup = CyclicGroup;
+var GeneratedGroup = (function () {
+    function GeneratedGroup(func) {
+        this.func = func;
+    }
+    GeneratedGroup.prototype.generate = function (items) {
+        if (items.length == 0) {
+            return [0];
+        }
+        return items.map(this.func);
+    };
+    return GeneratedGroup;
+})();
+exports.GeneratedGroup = GeneratedGroup;
 //https://en.wikipedia.org/wiki/Quaternion_group
 var QuaternionGroup = (function () {
     function QuaternionGroup() {
