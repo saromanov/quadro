@@ -55,6 +55,7 @@ console.log(symm4.exponent()); //6
 * Constant group
 * SymmetricGroup
 * CyclicGroup
+* GeneratedGroup
 
 
 ### Monoids
