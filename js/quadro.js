@@ -252,6 +252,14 @@ var SymmetricGroup = (function () {
             return false;
         }
     };
+    SymmetricGroup.prototype.is_abelian = function () {
+        if (this.degree >= 3) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
     return SymmetricGroup;
 })();
 exports.SymmetricGroup = SymmetricGroup;

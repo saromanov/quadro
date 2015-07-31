@@ -88,6 +88,14 @@ export class SymmetricGroup{
             return false;
          }
     }
+
+    is_abelian(): boolean {
+        if (this.degree >=3){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 export class CyclicGroup {
