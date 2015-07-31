@@ -11,6 +11,8 @@ export class Group extends Quasigroup<number> {
     }
 }
 
+
+//SimpleGroup contains only negate
 export class SimpleGroup extends Group{
     constructor(elems: number[]) {
         super(elems);
@@ -22,7 +24,7 @@ export class SimpleGroup extends Group{
 }
 
 
-//ConstantGroup is generalization of Trivial group
+//ConstantGroup is generalization of Trivial group and contains only one element
 export class ConstantGroup{
     private element: number
     constructor(element: number) {
@@ -98,6 +100,7 @@ export class SymmetricGroup{
     }
 }
 
+//CyclicGroup contains cyclic elements
 export class CyclicGroup {
     private n: number;
     private items: number[][];
@@ -116,6 +119,8 @@ export class CyclicGroup {
     }
 }
 
+
+//Generated Group gets function for generating elements of the group
 export class GeneratedGroup {
     private func:(x: number) => number; 
     constructor(func:((x: number) => number)){
