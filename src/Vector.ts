@@ -22,6 +22,16 @@ export class Vector{
 		return new Vector([]);
 	}
 
+	dot(elements: number[]): number {
+		if(this.elements.length == elements.length) {
+			return Util.Utils.range(0, this.elements.length+1).reduce((x,y) => { 
+				return this.elements[y-1] * elements[y-1] + x;
+		    })
+		}
+
+		throw new Error("Length of two vectors must be equal");
+	}
+
 	sum(): number{
 		return this.elements.reduce((x, y) => x + y);
 	}

@@ -708,6 +708,15 @@ var Vector = (function () {
         }
         return new Vector([]);
     };
+    Vector.prototype.dot = function (elements) {
+        var _this = this;
+        if (this.elements.length == elements.length) {
+            return Util.Utils.range(0, this.elements.length + 1).reduce(function (x, y) {
+                return _this.elements[y - 1] * elements[y - 1] + x;
+            });
+        }
+        throw new Error("Length of two vectors must be equal");
+    };
     Vector.prototype.sum = function () {
         return this.elements.reduce(function (x, y) { return x + y; });
     };
