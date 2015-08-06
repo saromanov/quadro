@@ -90,6 +90,8 @@ combi.binomial(7,2); //21
 ```
 
 ## Vector
+Implemented functions:
+
 ```javascript
 var vector = new quadro.Vector([1,2,4,5]);
 console.log(vector.add([5,4,7,8]));
