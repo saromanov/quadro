@@ -104,6 +104,9 @@ var Either = (function () {
         if (side == "right" && typeof value == typeof this.rightvalue) {
             return new Right(value);
         }
+        else {
+            return new None();
+        }
     };
     Either.prototype.left = function (value) {
         return new Left(value);
@@ -137,6 +140,13 @@ var Left = (function (_super) {
         this.item = item;
     }
     return Left;
+})(Side);
+var None = (function (_super) {
+    __extends(None, _super);
+    function None() {
+        _super.call(this, 0);
+    }
+    return None;
 })(Side);
 
 //Basic functor for list
@@ -294,6 +304,16 @@ var GeneratedGroup = (function () {
     return GeneratedGroup;
 })();
 exports.GeneratedGroup = GeneratedGroup;
+//http://www1.spms.ntu.edu.sg/~frederique/lecture9ws.pdf
+var QuotientGroup = (function () {
+    function QuotientGroup(items) {
+        this.items = items;
+    }
+    QuotientGroup.prototype.compute = function (subgroup) {
+    };
+    return QuotientGroup;
+})();
+exports.QuotientGroup = QuotientGroup;
 //https://en.wikipedia.org/wiki/Quaternion_group
 var QuaternionGroup = (function () {
     function QuaternionGroup() {

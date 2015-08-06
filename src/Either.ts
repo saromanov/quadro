@@ -14,6 +14,10 @@ export class Either<L, R> {
 		if(side == "right" && typeof value == typeof this.rightvalue) {
 			return new Right(value);
 		}
+
+		else {
+			return new None();
+		}
 	}
 
 	left(value:L):Side<L>{
@@ -46,5 +50,11 @@ class Left<T> extends Side<T> {
 	constructor(item:T) {
 		super(item);
 		this.item = item;
+	}
+}
+
+class None extends Side<number> {
+	constructor () {
+		super(0);
 	}
 }
