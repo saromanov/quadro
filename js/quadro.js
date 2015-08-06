@@ -714,6 +714,11 @@ var Vector = (function () {
     Vector.prototype.items = function () {
         return this.elements;
     };
+    Vector.prototype.mean = function () {
+        var datasum = this.sum();
+        var itemslen = this.elements.length;
+        return datasum / itemslen;
+    };
     return Vector;
 })();
 exports.Vector = Vector;

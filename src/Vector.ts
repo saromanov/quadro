@@ -29,4 +29,10 @@ export class Vector{
 	items():number[] {
 		return this.elements;
 	}
+
+	mean(): number {
+		const datasum = this.sum();
+		const itemslen = this.elements.length;
+		return datasum/itemslen;
+	}
 }
