@@ -1,4 +1,5 @@
 import Semigroup = require('./Semigroup');
+import {Matrix} from './Matrix'
 export {Ring, NumRing}
 
 interface Ring<T> {
@@ -23,4 +24,24 @@ class NumRing extends Semigroup.SemigroupNumber implements Ring<number>{
 		return one * second
 	}
 
+}
+
+class MatrixRing implements Ring<Matrix> {
+	private zero: number[][];
+	constructor() {
+	}
+
+	plus(one: Matrix, second:Matrix):Matrix {
+		return one.add(second.items())
+	}
+
+	multiply(one:Matrix, second: Matrix): Matrix {
+		return one.dot(second.items());
+	}
+
+	//Return true is one * second = second * one
+	is_commutative(one: Matrix, second: Matrix):boolean {
+		let first_result = one.dot(second.items());
+		return true;
+	}
 }

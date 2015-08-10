@@ -418,6 +418,9 @@ var Matrix = (function () {
         }
         return new Matrix(result);
     };
+    Matrix.prototype.items = function () {
+        return this.item;
+    };
     return Matrix;
 })();
 exports.Matrix = Matrix;
@@ -669,6 +672,22 @@ var NumRing = (function (_super) {
     return NumRing;
 })(Semigroup.SemigroupNumber);
 exports.NumRing = NumRing;
+var MatrixRing = (function () {
+    function MatrixRing() {
+    }
+    MatrixRing.prototype.plus = function (one, second) {
+        return one.add(second.items());
+    };
+    MatrixRing.prototype.multiply = function (one, second) {
+        return one.dot(second.items());
+    };
+    //Return true is one * second = second * one
+    MatrixRing.prototype.is_commutative = function (one, second) {
+        var first_result = one.dot(second.items());
+        return true;
+    };
+    return MatrixRing;
+})();
 
 //Example semigroup with natural numbers
 var SemigroupNumber = (function () {
