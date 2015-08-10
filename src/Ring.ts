@@ -1,11 +1,12 @@
 import Semigroup = require('./Semigroup');
+export {Ring, NumRing}
 
 interface Ring<T> {
 	plus(one:T, second:T):T
 	multiply(one:T, second:T)
 }
 
-export class NumRing extends Semigroup.SemigroupNumber implements Ring<number>{
+class NumRing extends Semigroup.SemigroupNumber implements Ring<number>{
 	private zero:number;
 	private one:number;
 	constructor(){
@@ -21,4 +22,5 @@ export class NumRing extends Semigroup.SemigroupNumber implements Ring<number>{
 	multiply(one:number, second: number){
 		return one * second
 	}
+
 }
