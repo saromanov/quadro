@@ -379,6 +379,34 @@ function range(n) {
     return result;
 }
 
+var Util = require('./Utils');
+var Matrix = (function () {
+    function Matrix(item) {
+        this.item = item;
+    }
+    Matrix.prototype.add = function (elements) {
+        var _this = this;
+        if (this.item.length != elements.length) {
+            throw new Error("Dimensions is not equal");
+        }
+        if (this.item[0].length != elements[0].length) {
+            throw new Error("Dimensions is not equal");
+        }
+        var result;
+        result = Util.Utils.range(0, this.item.length).map(function (x) { return Util.Utils.range(0, _this.item.length); });
+        for (var i = 0; i < this.item.length; ++i) {
+            var tmp = Util.Utils.range(0, this.item[0].length);
+            for (var j = 0; j < this.item[0].length; ++j) {
+                tmp[j] = this.item[i][j] + elements[i][j];
+            }
+            result[i] = tmp;
+        }
+        return new Matrix(result);
+    };
+    return Matrix;
+})();
+exports.Matrix = Matrix;
+
 var ZeroItem = (function () {
     function ZeroItem(zero) {
         this.zero = zero;
