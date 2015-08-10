@@ -406,6 +406,18 @@ var Matrix = (function () {
         }
         return new Matrix(result);
     };
+    Matrix.prototype.dot = function (elements) {
+        var result;
+        result = Util.Utils.zeros(this.item.length).map(function (x) { return Util.Utils.zeros(elements.length); });
+        for (var i = 0; i < this.item.length; ++i) {
+            for (var j = 0; j < elements.length; ++j) {
+                for (var k = 0; k < elements[0].length; ++k) {
+                    result[i][j] = result[i][j] + this.item[i][k] * elements[j][k];
+                }
+            }
+        }
+        return new Matrix(result);
+    };
     return Matrix;
 })();
 exports.Matrix = Matrix;
@@ -736,6 +748,14 @@ var Utils;
         return result;
     }
     Utils.range = range;
+    function zeros(num) {
+        var result = [];
+        for (var i = 0; i < num; ++i) {
+            result.push(0);
+        }
+        return result;
+    }
+    Utils.zeros = zeros;
 })(Utils = exports.Utils || (exports.Utils = {}));
 
 var Util = require('./Utils');

@@ -34,4 +34,17 @@ class Matrix {
 		return new Matrix(result);
 	}
 
+	dot(elements: number[][]): Matrix {
+		var result: number[][];
+		result = Util.Utils.zeros(this.item.length).map(x => Util.Utils.zeros(elements.length));
+		for(let i = 0;i < this.item.length;++i) {
+			for(let j= 0;j < elements.length;++j) {
+				for(let k = 0;k < elements[0].length;++k) {
+					result[i][j] = result[i][j] + this.item[i][k] * elements[j][k];
+				}
+			}
+		}
+		return new Matrix(result);
+	}
+
 }
