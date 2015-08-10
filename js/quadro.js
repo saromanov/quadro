@@ -149,6 +149,28 @@ var None = (function (_super) {
     return None;
 })(Side);
 
+var __extends = this.__extends || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+var Ring_1 = require('./Ring');
+var FieldNum = (function (_super) {
+    __extends(FieldNum, _super);
+    function FieldNum() {
+        _super.call(this);
+    }
+    FieldNum.prototype.div = function (one, two) {
+        if (two == 0) {
+            throw new Error("second number, can't be equal to zero");
+        }
+        return one / two;
+    };
+    return FieldNum;
+})(Ring_1.NumRing);
+exports.FieldNum = FieldNum;
+
 //Basic functor for list
 var Functor = (function () {
     function Functor(elems) {
