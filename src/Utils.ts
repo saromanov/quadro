@@ -32,4 +32,13 @@ export module Utils{
   	}
   	return result
   }
+
+  export function zeros(num: number): number[] {
+  	let result: number[] = [];
+  	for(let i = 0; i < num;++i){
+  		result.push(0);
+  	}
+  	return result
+  }
+
 }
