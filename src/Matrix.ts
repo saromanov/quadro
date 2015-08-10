@@ -8,7 +8,7 @@ class Matrix {
 		this.item = item;
 	}
 
-	add(elements: number[][]):Matrix {
+	private checks(elements: number[][]) {
 		if(this.item.length != elements.length) {
 			throw new Error("Dimensions is not equal");
 		}
@@ -16,6 +16,10 @@ class Matrix {
 		if(this.item[0].length != elements[0].length) {
 			throw new Error("Dimensions is not equal");
 		}
+
+	}
+	add(elements: number[][]):Matrix {
+		this.checks(elements);
 		var result: number[][];
 		result = Util.Utils.range(0, this.item.length).map(x => Util.Utils.range(0, this.item.length));
 		for(let i = 0;i < this.item.length;++i) {
@@ -29,4 +33,5 @@ class Matrix {
 
 		return new Matrix(result);
 	}
+
 }

@@ -384,14 +384,17 @@ var Matrix = (function () {
     function Matrix(item) {
         this.item = item;
     }
-    Matrix.prototype.add = function (elements) {
-        var _this = this;
+    Matrix.prototype.checks = function (elements) {
         if (this.item.length != elements.length) {
             throw new Error("Dimensions is not equal");
         }
         if (this.item[0].length != elements[0].length) {
             throw new Error("Dimensions is not equal");
         }
+    };
+    Matrix.prototype.add = function (elements) {
+        var _this = this;
+        this.checks(elements);
         var result;
         result = Util.Utils.range(0, this.item.length).map(function (x) { return Util.Utils.range(0, _this.item.length); });
         for (var i = 0; i < this.item.length; ++i) {
