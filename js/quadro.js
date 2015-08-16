@@ -656,6 +656,7 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var Semigroup = require('./Semigroup');
+var Util = require('./Utils');
 var NumRing = (function (_super) {
     __extends(NumRing, _super);
     function NumRing() {
@@ -685,10 +686,12 @@ var MatrixRing = (function () {
     //Return true is one * second = second * one
     MatrixRing.prototype.is_commutative = function (one, second) {
         var first_result = one.dot(second.items());
-        return true;
+        var second_result = second.dot(one.items());
+        return Util.Utils.equal(first_result.items(), second_result.items());
     };
     return MatrixRing;
 })();
+exports.MatrixRing = MatrixRing;
 
 //Example semigroup with natural numbers
 var SemigroupNumber = (function () {
@@ -776,6 +779,23 @@ var Utils;
         return result;
     }
     Utils.zeros = zeros;
+    function equal(item1, item2) {
+        if (item1.length != item2.length) {
+            return false;
+        }
+        if (item1[0].length != item2[0].length) {
+            return false;
+        }
+        for (var i = 0; i < item1.length; ++i) {
+            for (var j = 0; j < item1[0].length; ++j) {
+                if (item1[i][j] != item2[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    Utils.equal = equal;
 })(Utils = exports.Utils || (exports.Utils = {}));
 
 var Util = require('./Utils');

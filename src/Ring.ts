@@ -1,6 +1,7 @@
 import Semigroup = require('./Semigroup');
-import {Matrix} from './Matrix'
-export {Ring, NumRing}
+import {Matrix} from './Matrix';
+import Util = require('./Utils');
+export {Ring, NumRing, MatrixRing};
 
 interface Ring<T> {
 	plus(one:T, second:T):T
@@ -43,6 +44,7 @@ class MatrixRing implements Ring<Matrix> {
 	//Return true is one * second = second * one
 	is_commutative(one: Matrix, second: Matrix):boolean {
 		let first_result = one.dot(second.items());
-		return true;
+		let second_result = second.dot(one.items());
+		return Util.Utils.equal(first_result.items(), second_result.items());
 	}
 }
