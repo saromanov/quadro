@@ -47,4 +47,8 @@ class Matrix {
 		return new Matrix(result);
 	}
 
+	items(): number[][] {
+		return this.item;
+	}
+
 }
