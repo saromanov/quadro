@@ -41,4 +41,24 @@ export module Utils{
   	return result
   }
 
+  export function equal(item1:number[][], item2: number[][]):boolean {
+  	if(item1.length != item2.length) {
+  		return false;
+  	}
+
+  	if(item1[0].length != item2[0].length) {
+  		return false;
+  	}
+
+  	for(let i = 0;i < item1.length;++i) {
+  		for(let j = 0;j < item1[0].length;++j){
+  			if(item1[i][j] != item2[i][j]) {
+  				return false;
+  			}
+  		}
+  	}
+
+  	return true;
+  }
+
 }
