@@ -26,6 +26,7 @@ class NumRing extends Semigroup.SemigroupNumber implements Ring<number>{
 
 }
 
+//MatrixRing provides implementation of operations of Rings applys to matrix
 class MatrixRing implements Ring<Matrix> {
 	private zero: number[][];
 	constructor() {

@@ -672,6 +672,7 @@ var NumRing = (function (_super) {
     return NumRing;
 })(Semigroup.SemigroupNumber);
 exports.NumRing = NumRing;
+//MatrixRing provides implementation of operations of Rings applys to matrix
 var MatrixRing = (function () {
     function MatrixRing() {
     }
