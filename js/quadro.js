@@ -670,6 +670,10 @@ var NumRing = (function (_super) {
     NumRing.prototype.multiply = function (one, second) {
         return one * second;
     };
+    //For Z, Q and R is always commutative
+    NumRing.prototype.is_commutative = function (one, second) {
+        return true;
+    };
     return NumRing;
 })(Semigroup.SemigroupNumber);
 exports.NumRing = NumRing;
