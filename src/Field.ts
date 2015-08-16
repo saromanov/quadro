@@ -14,3 +14,11 @@ class FieldNum extends NumRing {
 		return one/two;
 	}
 }
+
+class QuadraticFieldNum extends NumRing {
+	private n: number;
+	constructor(n:number, a: number, b:number) {
+		this.n = a + b * Math.sqrt(n);
+		super();
+	}
+}

@@ -170,6 +170,14 @@ var FieldNum = (function (_super) {
     return FieldNum;
 })(Ring_1.NumRing);
 exports.FieldNum = FieldNum;
+var QuadraticFieldNum = (function (_super) {
+    __extends(QuadraticFieldNum, _super);
+    function QuadraticFieldNum(n, a, b) {
+        this.n = a + b * Math.sqrt(n);
+        _super.call(this);
+    }
+    return QuadraticFieldNum;
+})(Ring_1.NumRing);
 
 //Basic functor for list
 var Functor = (function () {
