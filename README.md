@@ -57,6 +57,14 @@ console.log(symm4.exponent()); //6
 * CyclicGroup
 * GeneratedGroup
 
+### Rings
+```javascript
+var m1 = new quadro.Matrix([[0,4], [5,7]]);
+var m2 = new quadro.Matrix([[7,1], [2,5]]);
+var mring = new quadro.MatrixRing();
+console.log("IS COMMUTATIVE: ", mring.is_commutative(m1, m2))
+```
+
 
 ### Monoids
 Monoid number
