@@ -226,6 +226,19 @@ var FiniteGroup = (function (_super) {
     }
     FiniteGroup.prototype.identity = function (n) {
     };
+    FiniteGroup.prototype.plus = function (n1, n2) {
+        if (!this.checkExist(n1) || !this.checkExist(n2)) {
+            throw new Error("Elements is not on the group");
+        }
+        return (n1 + n2) % this.size();
+    };
+    FiniteGroup.prototype.size = function () {
+        return this.elements.length;
+    };
+    //Checking if n contains in the elements
+    FiniteGroup.prototype.checkExist = function (n) {
+        return this.elements.indexOf(n) != -1;
+    };
     return FiniteGroup;
 })(Quasigroup_1.Quasigroup);
 exports.FiniteGroup = FiniteGroup;

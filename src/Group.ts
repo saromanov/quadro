@@ -23,7 +23,24 @@ export class FiniteGroup extends Quasigroup<number> {
     }
 
     identity(n:number){
-        
+
+    }
+
+    plus(n1: number, n2:number):number{
+        if(!this.checkExist(n1) || !this.checkExist(n2)){
+            throw new Error("Elements is not on the group");
+        }
+
+        return (n1 + n2)%this.size();
+    }
+
+    size():number {
+        return this.elements.length;
+    }
+
+    //Checking if n contains in the elements
+    private checkExist(n:number):boolean {
+        return this.elements.indexOf(n) != -1;
     }
 }
 
