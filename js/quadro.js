@@ -239,6 +239,10 @@ var FiniteGroup = (function (_super) {
     FiniteGroup.prototype.checkExist = function (n) {
         return this.elements.indexOf(n) != -1;
     };
+    FiniteGroup.prototype.coset = function () {
+        //TODO
+        return this.elements;
+    };
     return FiniteGroup;
 })(Quasigroup_1.Quasigroup);
 exports.FiniteGroup = FiniteGroup;

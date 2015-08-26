@@ -42,6 +42,11 @@ export class FiniteGroup extends Quasigroup<number> {
     private checkExist(n:number):boolean {
         return this.elements.indexOf(n) != -1;
     }
+
+    coset():number[] {
+        //TODO
+        return this.elements;
+    }
 }
 
 
