@@ -716,6 +716,10 @@ var SemigroupNumber = (function () {
             return n1 + n2;
         }
     };
+    //inverse of element n
+    SemigroupNumber.prototype.inv = function (n) {
+        return Math.pow(n, -1);
+    };
     return SemigroupNumber;
 })();
 exports.SemigroupNumber = SemigroupNumber;

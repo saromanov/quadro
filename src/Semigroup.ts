@@ -14,4 +14,9 @@ export class SemigroupNumber {
 			return n1 + n2;
 		}
 	}
+
+	//inverse of element n
+	inv(n: number): number {
+		return Math.pow(n, -1);
+	}
 }
