@@ -217,6 +217,7 @@ var __extends = this.__extends || function (d, b) {
 var Permutations_1 = require('./Permutations');
 var Quasigroup_1 = require('./Quasigroup');
 //Definition of group
+//Group in general is finite group
 var Group = (function (_super) {
     __extends(Group, _super);
     function Group(elems) {

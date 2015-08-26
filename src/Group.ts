@@ -3,6 +3,7 @@ import {Permutations} from './Permutations';
 import {Quasigroup} from './Quasigroup';
 
 //Definition of group
+//Group in general is finite group
 export class Group extends Quasigroup<number> {
     protected elements: number[];
     constructor(elems: number[]){
@@ -133,6 +134,18 @@ export class GeneratedGroup {
         }
 
         return items.map(this.func);
+    }
+}
+
+//http://www1.spms.ntu.edu.sg/~frederique/lecture9ws.pdf
+export class QuotientGroup {
+    private items: number[];
+    constructor(items: number[]) {
+        this.items = items;
+    }
+
+    compute(subgroup: number[]){
+
     }
 }
 
