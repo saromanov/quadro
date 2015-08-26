@@ -720,6 +720,14 @@ var SemigroupNumber = (function () {
     SemigroupNumber.prototype.inv = function (n) {
         return Math.pow(n, -1);
     };
+    //Simple generation of set
+    SemigroupNumber.prototype.generate = function (func, limit) {
+        var result = [];
+        for (var i = 0; i < limit; ++i) {
+            result.push(func(i));
+        }
+        return result;
+    };
     return SemigroupNumber;
 })();
 exports.SemigroupNumber = SemigroupNumber;

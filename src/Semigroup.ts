@@ -19,4 +19,13 @@ export class SemigroupNumber {
 	inv(n: number): number {
 		return Math.pow(n, -1);
 	}
+
+	//Simple generation of set
+	generate(func:(A:number) => number, limit: number){
+		let result = [];
+		for(let i = 0;i < limit;++i) {
+			result.push(func(i));
+		}
+		return result;
+	}
 }
