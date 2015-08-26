@@ -2,19 +2,34 @@ import Abstract = require('./Abstract');
 import {Permutations} from './Permutations';
 import {Quasigroup} from './Quasigroup';
 
+interface Group<T> {
+    //Returns identity element
+    identity():T
+    //Returns elements of the group
+    elements(): T[];
+    //Inverse operation
+    inv():T;
+
+}
+
+
 //Definition of group
 //Group in general is finite group
-export class Group extends Quasigroup<number> {
+export class FiniteGroup extends Quasigroup<number> {
     protected elements: number[];
     constructor(elems: number[]){
     	this.elements = elems;
         super(elems)
     }
+
+    identity(n:number){
+        
+    }
 }
 
 
 //SimpleGroup contains only negate
-export class SimpleGroup extends Group{
+export class SimpleGroup extends FiniteGroup{
     constructor(elems: number[]) {
         super(elems);
     }

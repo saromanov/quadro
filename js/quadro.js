@@ -218,15 +218,17 @@ var Permutations_1 = require('./Permutations');
 var Quasigroup_1 = require('./Quasigroup');
 //Definition of group
 //Group in general is finite group
-var Group = (function (_super) {
-    __extends(Group, _super);
-    function Group(elems) {
+var FiniteGroup = (function (_super) {
+    __extends(FiniteGroup, _super);
+    function FiniteGroup(elems) {
         this.elements = elems;
         _super.call(this, elems);
     }
-    return Group;
+    FiniteGroup.prototype.identity = function (n) {
+    };
+    return FiniteGroup;
 })(Quasigroup_1.Quasigroup);
-exports.Group = Group;
+exports.FiniteGroup = FiniteGroup;
 //SimpleGroup contains only negate
 var SimpleGroup = (function (_super) {
     __extends(SimpleGroup, _super);
@@ -237,7 +239,7 @@ var SimpleGroup = (function (_super) {
         return this.elements.map(function (x) { return -x; });
     };
     return SimpleGroup;
-})(Group);
+})(FiniteGroup);
 exports.SimpleGroup = SimpleGroup;
 //ConstantGroup is generalization of Trivial group and contains only one element
 var ConstantGroup = (function () {
