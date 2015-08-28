@@ -421,6 +421,7 @@ var Matrix = (function () {
             throw new Error("Dimensions is not equal");
         }
     };
+    //add provides adding elements of two matrices
     Matrix.prototype.add = function (elements) {
         var _this = this;
         this.checks(elements);
@@ -435,6 +436,7 @@ var Matrix = (function () {
         }
         return new Matrix(result);
     };
+    //dot provides dot product
     Matrix.prototype.dot = function (elements) {
         var result;
         result = Util.Utils.zeros(this.item.length).map(function (x) { return Util.Utils.zeros(elements.length); });
@@ -447,9 +449,11 @@ var Matrix = (function () {
         }
         return new Matrix(result);
     };
+    //items provides returns current elements
     Matrix.prototype.items = function () {
         return this.item;
     };
+    //shape provides shape of current elements
     Matrix.prototype.shape = function () {
         var first = this.item.length;
         var second = this.item[0].length;

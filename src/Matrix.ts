@@ -20,6 +20,8 @@ class Matrix {
 		}
 
 	}
+
+	//add provides adding elements of two matrices
 	add(elements: number[][]):Matrix {
 		this.checks(elements);
 		var result: number[][];
@@ -36,6 +38,7 @@ class Matrix {
 		return new Matrix(result);
 	}
 
+	//dot provides dot product
 	dot(elements: number[][]): Matrix {
 		var result: number[][];
 		result = Util.Utils.zeros(this.item.length).map(x => Util.Utils.zeros(elements.length));
@@ -49,10 +52,12 @@ class Matrix {
 		return new Matrix(result);
 	}
 
+	//items provides returns current elements
 	items(): number[][] {
 		return this.item;
 	}
 
+	//shape provides shape of current elements
 	shape(): number[] {
 		let first = this.item.length;
 		let second = this.item[0].length;
