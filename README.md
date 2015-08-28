@@ -109,6 +109,15 @@ console.log(vector.sub([5,4,7,8]));
 console.log(vector.dot([5,4,7,8]));
 ```
 
+## Matrix
+Implementation of matrix operations
+```javascript
+var m1 = new quadro.Matrix([[0,4], [5,7]]);
+var m2 = new quadro.Matrix([[7,1], [2,5]]);
+console.log("SHAPE: ", m1.shape());
+console.log("DOT: ", m1.dot(m2));
+```
+
 ## Utils
 fast exponentiation
 ```javascript
