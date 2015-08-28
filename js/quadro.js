@@ -408,6 +408,7 @@ function range(n) {
 }
 
 var Util = require('./Utils');
+//Matrix provides basic operations on matrix
 var Matrix = (function () {
     function Matrix(item) {
         this.item = item;

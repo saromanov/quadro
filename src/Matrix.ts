@@ -2,6 +2,8 @@ import Util = require('./Utils')
 
 export {Matrix};
 
+
+//Matrix provides basic operations on matrix
 class Matrix {
 	private item: number[][];
 	constructor(item: number[][]) {
