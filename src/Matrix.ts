@@ -53,4 +53,10 @@ class Matrix {
 		return this.item;
 	}
 
+	shape(): number[] {
+		let first = this.item.length;
+		let second = this.item[0].length;
+		return [first, second];
+	}
+
 }

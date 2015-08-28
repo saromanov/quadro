@@ -450,6 +450,11 @@ var Matrix = (function () {
     Matrix.prototype.items = function () {
         return this.item;
     };
+    Matrix.prototype.shape = function () {
+        var first = this.item.length;
+        var second = this.item[0].length;
+        return [first, second];
+    };
     return Matrix;
 })();
 exports.Matrix = Matrix;
