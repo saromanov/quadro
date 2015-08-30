@@ -772,6 +772,7 @@ var SemigroupNumber = (function () {
 })();
 exports.SemigroupNumber = SemigroupNumber;
 
+
 var Set = (function () {
     function Set(values) {
         this.values = values;
