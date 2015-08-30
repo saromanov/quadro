@@ -772,6 +772,25 @@ var SemigroupNumber = (function () {
 })();
 exports.SemigroupNumber = SemigroupNumber;
 
+var SemiringBool = (function () {
+    function SemiringBool(elem) {
+        this.elem = elem;
+    }
+    SemiringBool.prototype.zero = function () {
+        return false;
+    };
+    SemiringBool.prototype.one = function () {
+        return true;
+    };
+    SemiringBool.prototype.plus = function (one) {
+        return this.elem || one;
+    };
+    SemiringBool.prototype.dot = function (one) {
+        return this.elem && one;
+    };
+    return SemiringBool;
+})();
+exports.SemiringBool = SemiringBool;
 
 var Set = (function () {
     function Set(values) {
