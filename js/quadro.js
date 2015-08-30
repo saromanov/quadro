@@ -785,7 +785,7 @@ var SemiringBool = (function () {
     SemiringBool.prototype.plus = function (one) {
         return this.elem || one;
     };
-    SemiringBool.prototype.dot = function (one) {
+    SemiringBool.prototype.mult = function (one) {
         return this.elem && one;
     };
     return SemiringBool;

@@ -3,8 +3,12 @@ export {Semiring, SemiringBool};
 interface Semiring<T> {
 	zero():T;
 	one():T;
+
+	//Addition operation
 	plus(one:T):T;
-	dot(one:T);
+
+	//multiplication operation
+	mult(one:T);
 }
 
 class SemiringBool implements Semiring<boolean> {
@@ -26,7 +30,7 @@ class SemiringBool implements Semiring<boolean> {
 		return this.elem || one;
 	}
 
-	dot(one:boolean): boolean {
+	mult(one:boolean): boolean {
 		return this.elem && one;
 	}
 }
