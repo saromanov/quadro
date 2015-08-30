@@ -1,6 +1,5 @@
+export {Semiring};
 
-
-//http://www.cl.cam.ac.uk/~sd601/papers/semirings.pdf
 interface Semiring<T> {
 	zero():T;
 	one():T;
