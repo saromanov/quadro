@@ -52,6 +52,16 @@ var cbrtn = function (num, p) {
     return Math.pow(num, 1 / p);
 };
 
+var Category = (function () {
+    //With construction of Category, apply identity element
+    function Category(id) {
+        this.id = id;
+    }
+    Category.prototype.apply = function (m, elems) {
+    };
+    return Category;
+})();
+
 //Combinations provides implementation of basic combinatorics formulas
 var Combinations = (function () {
     function Combinations() {
