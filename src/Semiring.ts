@@ -11,6 +11,8 @@ interface Semiring<T> {
 	mult(one:T);
 }
 
+
+//SemiringBool implements boolmean operations based on Semiring
 class SemiringBool implements Semiring<boolean> {
 	private elem:boolean;
 

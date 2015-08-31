@@ -772,6 +772,7 @@ var SemigroupNumber = (function () {
 })();
 exports.SemigroupNumber = SemigroupNumber;
 
+//SemiringBool implements boolmean operations based on Semiring
 var SemiringBool = (function () {
     function SemiringBool(elem) {
         this.elem = elem;
