@@ -225,35 +225,39 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var Permutations_1 = require('./Permutations');
-var Quasigroup_1 = require('./Quasigroup');
 //Definition of group
 //Group in general is finite group
-var FiniteGroup = (function (_super) {
-    __extends(FiniteGroup, _super);
+var FiniteGroup = (function () {
     function FiniteGroup(elems) {
-        this.elements = elems;
-        _super.call(this, elems);
+        this.elems = elems;
     }
-    FiniteGroup.prototype.identity = function (n) {
+    FiniteGroup.prototype.identity = function () {
+        return 1;
+    };
+    FiniteGroup.prototype.elements = function () {
+        return this.elems;
+    };
+    FiniteGroup.prototype.inv = function () {
+        return 0;
     };
     FiniteGroup.prototype.plus = function (n1, n2) {
         if (!this.checkExist(n1) || !this.checkExist(n2)) {
-            throw new Error("Elements is not on the group");
+            throw new Error("element is not on the group");
         }
         return (n1 + n2) % this.size();
     };
     FiniteGroup.prototype.size = function () {
-        return this.elements.length;
+        return this.elems.length;
     };
-    //Checking if n contains in the elements
+    //Checking if n contains in the elememnts
     FiniteGroup.prototype.checkExist = function (n) {
-        return this.elements.indexOf(n) != -1;
+        return this.elems.indexOf(n) != -1;
     };
     FiniteGroup.prototype.coset = function (subgroup, element) {
-        return this.elements;
+        return this.elems;
     };
     return FiniteGroup;
-})(Quasigroup_1.Quasigroup);
+})();
 exports.FiniteGroup = FiniteGroup;
 //SimpleGroup contains only negate
 var SimpleGroup = (function (_super) {
@@ -262,7 +266,7 @@ var SimpleGroup = (function (_super) {
         _super.call(this, elems);
     }
     SimpleGroup.prototype.negate = function () {
-        return this.elements.map(function (x) { return -x; });
+        return this.elems.map(function (x) { return -x; });
     };
     return SimpleGroup;
 })(FiniteGroup);

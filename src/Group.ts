@@ -15,36 +15,43 @@ interface Group<T> {
 
 //Definition of group
 //Group in general is finite group
-export class FiniteGroup extends Quasigroup<number> {
-    protected elements: number[];
+export class FiniteGroup implements Group<number> {
+    protected elems: number[];
     constructor(elems: number[]){
-    	this.elements = elems;
-        super(elems)
+    	this.elems = elems;
     }
 
-    identity(n:number){
+    identity():number{
+        return 1;
+    }
 
+    elements():number[] {
+        return this.elems;
+    }
+
+    inv(): number {
+        return 0;
     }
 
     plus(n1: number, n2:number):number{
         if(!this.checkExist(n1) || !this.checkExist(n2)){
-            throw new Error("Elements is not on the group");
+            throw new Error("element is not on the group");
         }
 
         return (n1 + n2)%this.size();
     }
 
     size():number {
-        return this.elements.length;
+        return this.elems.length;
     }
 
-    //Checking if n contains in the elements
+    //Checking if n contains in the elememnts
     private checkExist(n:number):boolean {
-        return this.elements.indexOf(n) != -1;
+        return this.elems.indexOf(n) != -1;
     }
 
     coset(subgroup: FiniteGroup, element:number):number[] {
-        return this.elements;
+        return this.elems;
     }
 }
 
@@ -56,7 +63,7 @@ export class SimpleGroup extends FiniteGroup{
     }
 
     negate(): number[] {
-        return this.elements.map(x => -x);
+        return this.elems.map(x => -x);
     }
 }
 
