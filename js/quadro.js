@@ -249,8 +249,7 @@ var FiniteGroup = (function (_super) {
     FiniteGroup.prototype.checkExist = function (n) {
         return this.elements.indexOf(n) != -1;
     };
-    FiniteGroup.prototype.coset = function () {
-        //TODO
+    FiniteGroup.prototype.coset = function (subgroup, element) {
         return this.elements;
     };
     return FiniteGroup;

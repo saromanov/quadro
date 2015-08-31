@@ -43,8 +43,7 @@ export class FiniteGroup extends Quasigroup<number> {
         return this.elements.indexOf(n) != -1;
     }
 
-    coset():number[] {
-        //TODO
+    coset(subgroup: FiniteGroup, element:number):number[] {
         return this.elements;
     }
 }
