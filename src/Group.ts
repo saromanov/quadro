@@ -51,7 +51,16 @@ export class FiniteGroup implements Group<number> {
     }
 
     coset(subgroup: FiniteGroup, element:number):number[] {
-        return this.elems;
+        let values = subgroup.elements();
+        if (!this.checkExist(element)) {
+            throw new Error("element is not on the group");
+        }
+
+        let newelements = [];
+        for(let i = 0;i < values.length;++i) {
+            newelements.push(this.plus(values[i], element));
+        }
+        return newelements;
     }
 }
 

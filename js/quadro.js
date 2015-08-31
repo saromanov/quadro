@@ -254,7 +254,15 @@ var FiniteGroup = (function () {
         return this.elems.indexOf(n) != -1;
     };
     FiniteGroup.prototype.coset = function (subgroup, element) {
-        return this.elems;
+        var values = subgroup.elements();
+        if (!this.checkExist(element)) {
+            throw new Error("element is not on the group");
+        }
+        var newelements = [];
+        for (var i = 0; i < values.length; ++i) {
+            newelements.push(this.plus(values[i], element));
+        }
+        return newelements;
     };
     return FiniteGroup;
 })();
