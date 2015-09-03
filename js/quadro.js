@@ -809,14 +809,14 @@ var Set = (function () {
         this.values = values;
     }
     Set.prototype.product = function (otherset) {
-        return this.values.map(function (x) { return otherset.get_items().map(function (y) { return (x, y); }); });
+        return this.values.map(function (x) { return otherset.items().map(function (y) { return (x, y); }); });
     };
     Set.prototype.intersection = function (otherset) {
         var _this = this;
-        var items = otherset.get_items();
+        var items = otherset.items();
         return new Set(items.filter(function (x) { return _this.values.indexOf(x) != -1; }));
     };
-    Set.prototype.get_items = function () {
+    Set.prototype.items = function () {
         return this.values;
     };
     //Return random element from set
