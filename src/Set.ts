@@ -21,6 +21,13 @@ export class Set<T> {
     return this.filteri(otherset, (x => this.values.indexOf(x) == -1));
   }
 
+  //A (+) B = {x : x in A or x in B but not both}
+  sim_difference(otherset: Set<T>): Set<T> {
+    let items = otherset.items();
+    return new Set<T>(items.filter(x => (this.values.indexOf(x) != -1
+      || items.indexOf(x) != -1) && !(items.indexOf(x) != -1 && this.values.indexOf(x) != -1)));
+  }
+
   //items returns items 
   items(): T[]{
     return this.values;

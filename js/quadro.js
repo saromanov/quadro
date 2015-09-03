@@ -823,6 +823,13 @@ var Set = (function () {
         var items = otherset.items();
         return this.filteri(otherset, (function (x) { return _this.values.indexOf(x) == -1; }));
     };
+    //A (+) B = {x : x in A or x in B but not both}
+    Set.prototype.sim_difference = function (otherset) {
+        var _this = this;
+        var items = otherset.items();
+        return new Set(items.filter(function (x) { return (_this.values.indexOf(x) != -1
+            || items.indexOf(x) != -1) && !(items.indexOf(x) != -1 && _this.values.indexOf(x) != -1); }));
+    };
     //items returns items 
     Set.prototype.items = function () {
         return this.values;
