@@ -813,13 +813,12 @@ var Set = (function () {
     };
     Set.prototype.intersection = function (otherset) {
         var _this = this;
-        var items = otherset.items();
-        return new Set(items.filter(function (x) { return _this.values.indexOf(x) != -1; }));
+        return this.filteri(otherset, (function (x) { return _this.values.indexOf(x) != -1; }));
     };
     Set.prototype.difference = function (otherset) {
         var _this = this;
         var items = otherset.items();
-        return new Set(items.filter(function (x) { return _this.values.indexOf(x) == -1; }));
+        return this.filteri(otherset, (function (x) { return _this.values.indexOf(x) == -1; }));
     };
     Set.prototype.items = function () {
         return this.values;
@@ -831,6 +830,10 @@ var Set = (function () {
     //Return true is elem contains this set
     Set.prototype.isElement = function (elem) {
         return this.values.indexOf(elem) != -1;
+    };
+    Set.prototype.filteri = function (otherset, func) {
+        var items = otherset.items();
+        return new Set(items.filter(func));
     };
     return Set;
 })();

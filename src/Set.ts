@@ -10,13 +10,12 @@ export class Set<T> {
   }
 
   intersection(otherset: Set<T>): Set<T> {
-    let items = otherset.items();
-    return new Set<T>(items.filter(x => this.values.indexOf(x) != -1));
+    return this.filteri(otherset, (x => this.values.indexOf(x) != -1));
   }
 
   difference(otherset: Set<T>): Set<T> {
     let items = otherset.items();
-    return new Set<T>(items.filter(x => this.values.indexOf(x) == -1));
+    return this.filteri(otherset, (x => this.values.indexOf(x) == -1));
   }
 
   items(): T[]{
@@ -31,5 +30,10 @@ export class Set<T> {
   //Return true is elem contains this set
   isElement(elem:T): boolean {
       return this.values.indexOf(elem) != -1;
+  }
+
+  private filteri(otherset: Set<T>, func:((A:T) => boolean)): Set<T> {
+    let items = otherset.items();
+    return new Set<T>(items.filter(func));
   }
 }
