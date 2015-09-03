@@ -65,6 +65,12 @@ var mring = new quadro.MatrixRing();
 console.log("IS COMMUTATIVE: ", mring.is_commutative(m1, m2))
 ```
 
+### Semirings
+```javascript
+var semi = new quadro.SemiringBool(true);
+console.log(semi.mult(false));
+```
+
 ### Fields
 
 
