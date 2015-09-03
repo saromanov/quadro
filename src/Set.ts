@@ -5,19 +5,23 @@ export class Set<T> {
       this.values = values
   }
 
+  //product of two sets
   product(otherset: Set<T>){
       return this.values.map(x => otherset.items().map(y => (x,y)));
   }
 
+  //A /^\ B = {x : x in A and x in B}
   intersection(otherset: Set<T>): Set<T> {
     return this.filteri(otherset, (x => this.values.indexOf(x) != -1));
   }
 
+  //A \ B = {x : x in A and x not in B}
   difference(otherset: Set<T>): Set<T> {
     let items = otherset.items();
     return this.filteri(otherset, (x => this.values.indexOf(x) == -1));
   }
 
+  //items returns items 
   items(): T[]{
     return this.values;
   }

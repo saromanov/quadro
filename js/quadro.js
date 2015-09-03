@@ -808,18 +808,22 @@ var Set = (function () {
     function Set(values) {
         this.values = values;
     }
+    //product of two sets
     Set.prototype.product = function (otherset) {
         return this.values.map(function (x) { return otherset.items().map(function (y) { return (x, y); }); });
     };
+    //A /^\ B = {x : x in A and x in B}
     Set.prototype.intersection = function (otherset) {
         var _this = this;
         return this.filteri(otherset, (function (x) { return _this.values.indexOf(x) != -1; }));
     };
+    //A \ B = {x : x in A and x not in B}
     Set.prototype.difference = function (otherset) {
         var _this = this;
         var items = otherset.items();
         return this.filteri(otherset, (function (x) { return _this.values.indexOf(x) == -1; }));
     };
+    //items returns items 
     Set.prototype.items = function () {
         return this.values;
     };
