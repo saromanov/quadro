@@ -218,6 +218,37 @@ var Functor = (function () {
 })();
 exports.Functor = Functor;
 
+//Implementation of fuzzy sets
+var FuzzySet = (function () {
+    function FuzzySet(setdata, func) {
+        this.func = func;
+        this.setdata = setdata;
+    }
+    FuzzySet.prototype.apply = function (x) {
+        return this.func(x);
+    };
+    FuzzySet.prototype.intersection = function (otherset) {
+        var result = [];
+        for (var i = 0; i < this.setdata.length; ++i) {
+            result.push(Math.min(this.func(this.setdata[i]), otherset.apply(this.setdata[i])));
+        }
+        return result;
+    };
+    return FuzzySet;
+})();
+//Typical t-norms for fuzzy sets
+var FuzzySetTNorms = (function () {
+    function FuzzySetTNorms() {
+    }
+    FuzzySetTNorms.prototype.drastic = function (fs1, fs2, x) {
+        if (Math.max(fs1.apply(x), fs2.apply(x)) == 1) {
+            return Math.max(fs1.apply(x), fs2.apply(x));
+        }
+        return 0;
+    };
+    return FuzzySetTNorms;
+})();
+
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
