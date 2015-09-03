@@ -14,6 +14,11 @@ export class Set<T> {
     return new Set<T>(items.filter(x => this.values.indexOf(x) != -1));
   }
 
+  difference(otherset: Set<T>): Set<T> {
+    let items = otherset.items();
+    return new Set<T>(items.filter(x => this.values.indexOf(x) == -1));
+  }
+
   items(): T[]{
     return this.values;
   }

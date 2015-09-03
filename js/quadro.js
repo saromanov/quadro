@@ -816,6 +816,11 @@ var Set = (function () {
         var items = otherset.items();
         return new Set(items.filter(function (x) { return _this.values.indexOf(x) != -1; }));
     };
+    Set.prototype.difference = function (otherset) {
+        var _this = this;
+        var items = otherset.items();
+        return new Set(items.filter(function (x) { return _this.values.indexOf(x) == -1; }));
+    };
     Set.prototype.items = function () {
         return this.values;
     };
