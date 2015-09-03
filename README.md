@@ -118,6 +118,16 @@ console.log("SHAPE: ", m1.shape());
 console.log("DOT: ", m1.dot(m2));
 ```
 
+### Set
+Implementation of sets
+```javascript
+var set1 = new quadro.Set([2,8,4,5]);
+var set2 = new quadro.Set([4,5,3,1]);
+console.log("SET intersection: ", set1.intersection(set2));
+console.log("SET difference: ", set1.difference(set2));
+console.log("SET symmetric difference: ", set1.sim_difference(set2));
+```
+
 ## Utils
 fast exponentiation
 ```javascript
