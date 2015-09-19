@@ -987,6 +987,19 @@ var Vector = (function () {
         var itemslen = this.elements.length;
         return datasum / itemslen;
     };
+    Vector.prototype.max = function () {
+        var itemslen = this.elements.length;
+        if (itemslen == 0) {
+            return 0;
+        }
+        var maxvalue = 0;
+        this.elements.forEach(function (x) {
+            if (x > maxvalue) {
+                maxvalue = x;
+            }
+        });
+        return maxvalue;
+    };
     return Vector;
 })();
 exports.Vector = Vector;

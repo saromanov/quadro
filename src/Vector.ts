@@ -45,4 +45,20 @@ export class Vector{
 		const itemslen = this.elements.length;
 		return datasum/itemslen;
 	}
+
+	max(): number {
+		const itemslen = this.elements.length;
+		if(itemslen == 0) {
+			return 0;
+		}
+
+		let maxvalue = 0;
+		this.elements.forEach(x => {
+			if(x > maxvalue) {
+				maxvalue = x;
+			}
+		});
+
+		return maxvalue;
+	}
 }
