@@ -45,6 +45,9 @@ var BanachSpace = (function () {
         }
         return cbrtn(new Vector.Vector(vec.items().map(function (x) { return Math.pow(x, p); })).sum(), p);
     };
+    BanachSpace.prototype.ln = function (vec) {
+        return vec.max();
+    };
     return BanachSpace;
 })();
 exports.BanachSpace = BanachSpace;

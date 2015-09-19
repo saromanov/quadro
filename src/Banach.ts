@@ -1,4 +1,4 @@
-import Vector = require('./Vector')
+import Vector = require('./Vector');
 
 //Norms in Banach space
 //https://en.wikipedia.org/wiki/List_of_Banach_spaces
@@ -16,6 +16,10 @@ export class BanachSpace{
 			return 0;
 		}
 		return cbrtn(new Vector.Vector(vec.items().map(x => Math.pow(x, p))).sum(), p);
+	}
+
+	ln(vec: Vector.Vector): number {
+		return vec.max();
 	}
 }
 
