@@ -1003,6 +1003,9 @@ var Vector = (function () {
         });
         return maxvalue;
     };
+    Vector.prototype.size = function () {
+        return this.elements.length;
+    };
     return Vector;
 })();
 exports.Vector = Vector;

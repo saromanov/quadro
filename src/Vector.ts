@@ -61,4 +61,8 @@ export class Vector{
 
 		return maxvalue;
 	}
+
+	size(): number {
+		return this.elements.length;
+	}
 }
