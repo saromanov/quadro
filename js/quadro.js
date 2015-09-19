@@ -33,6 +33,7 @@ exports.ElementModel = ElementModel;
 var Vector = require('./Vector');
 //Norms in Banach space
 //https://en.wikipedia.org/wiki/List_of_Banach_spaces
+// This class provides implementation of norms
 var BanachSpace = (function () {
     function BanachSpace() {
     }
@@ -47,6 +48,18 @@ var BanachSpace = (function () {
     };
     BanachSpace.prototype.ln = function (vec) {
         return vec.max();
+    };
+    BanachSpace.prototype.bv = function (vec) {
+        if (vec.size() == 1) {
+            return Math.abs(vec.items()[0]);
+        }
+        var result = Math.abs(vec.items()[0]);
+        var tmp = 0;
+        var items = vec.items();
+        for (var i = 0; i < vec.size() - 1; ++i) {
+            tmp += Math.abs(items[i + 1] - items[i]);
+        }
+        return result + tmp;
     };
     return BanachSpace;
 })();

@@ -2,6 +2,7 @@ import Vector = require('./Vector');
 
 //Norms in Banach space
 //https://en.wikipedia.org/wiki/List_of_Banach_spaces
+// This class provides implementation of norms
 export class BanachSpace{
 	constructor(){
 
@@ -20,6 +21,21 @@ export class BanachSpace{
 
 	ln(vec: Vector.Vector): number {
 		return vec.max();
+	}
+
+	bv(vec: Vector.Vector): number {
+		if(vec.size() == 1) {
+			return Math.abs(vec.items()[0]);
+		}
+
+		let result = Math.abs(vec.items()[0]);
+		let tmp = 0;
+		let items = vec.items();
+		for(let i = 0;i < vec.size()-1;++i) {
+			tmp += Math.abs(items[i+1] - items[i]);
+		}
+
+		return result + tmp;
 	}
 }
 
