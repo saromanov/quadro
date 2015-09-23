@@ -30,8 +30,12 @@ class FuzzySetTNorms {
 
 	drastic(fs1: FuzzySet, fs2: FuzzySet, x:number) {
 		if(Math.max(fs1.apply(x), fs2.apply(x))== 1) {
-			return Math.max(fs1.apply(x), fs2.apply(x))
+			return Math.max(fs1.apply(x), fs2.apply(x));
 		}
 		return 0;
+	}
+
+	bounded(fs1: FuzzySet, fs2: FuzzySet, x: number) {
+		return Math.max(1, fs1.apply(x) + fs2.apply(x));
 	}
 }

@@ -266,6 +266,9 @@ var FuzzySetTNorms = (function () {
         }
         return 0;
     };
+    FuzzySetTNorms.prototype.bounded = function (fs1, fs2, x) {
+        return Math.max(1, fs1.apply(x) + fs2.apply(x));
+    };
     return FuzzySetTNorms;
 })();
 
