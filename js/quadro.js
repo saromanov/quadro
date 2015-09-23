@@ -95,6 +95,10 @@ var Combinations = (function () {
         }
         return factorial(n) / factorial(n - k);
     };
+    //Return n!
+    Combinations.prototype.fact = function (n) {
+        return factorial(n);
+    };
     return Combinations;
 })();
 exports.Combinations = Combinations;

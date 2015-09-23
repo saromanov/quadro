@@ -16,6 +16,13 @@ export class Combinations {
 
 		return factorial(n)/factorial(n - k);
 	}
+
+	//Return n!
+	fact(n:number): number {
+		return factorial(n);
+	}
+
+
 }
 
 var factorial = function(n:number){
