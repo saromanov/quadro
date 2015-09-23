@@ -244,9 +244,11 @@ var FuzzySet = (function () {
         this.func = func;
         this.setdata = setdata;
     }
+    //Apply func ti the data
     FuzzySet.prototype.apply = function (x) {
         return this.func(x);
     };
+    //Return intersection of two fuzzy sets
     FuzzySet.prototype.intersection = function (otherset) {
         var result = [];
         for (var i = 0; i < this.setdata.length; ++i) {

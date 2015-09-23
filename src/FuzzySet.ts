@@ -8,10 +8,12 @@ class FuzzySet {
 		this.setdata = setdata;
 	}
 
+	//Apply func ti the data
 	apply(x: number): number {
 		return this.func(x);
 	}
 
+	//Return intersection of two fuzzy sets
 	intersection(otherset: FuzzySet) {
 		let result = [];
 		for(let i = 0;i < this.setdata.length;++i) {
