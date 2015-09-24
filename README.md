@@ -134,6 +134,18 @@ console.log("SET difference: ", set1.difference(set2));
 console.log("SET symmetric difference: ", set1.sim_difference(set2));
 ```
 
+### Fuzzy sets
+Basic operations with fuzzy sets
+```javascript
+var fuzzy = new quadro.FuzzySet([0.4,0.7,0.5,0.9,0.41], function(x){
+	return x % 2;
+});
+var fuzzy2 = new quadro.FuzzySet([0.8,0.4,0.6,0.3,0.9], function(x){
+	return x + 2;
+});
+console.log(fuzzy.intersection(fuzzy2));
+```
+
 ## Utils
 fast exponentiation
 ```javascript
