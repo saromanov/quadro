@@ -191,6 +191,12 @@ var FieldNum = (function (_super) {
     function FieldNum() {
         _super.call(this);
     }
+    FieldNum.prototype.inverse = function (num) {
+        if (num == 0) {
+            throw new Error("number can't be equal to zero");
+        }
+        return 1 / num;
+    };
     FieldNum.prototype.div = function (one, two) {
         if (two == 0) {
             throw new Error("second number, can't be equal to zero");

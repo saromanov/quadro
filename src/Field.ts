@@ -7,6 +7,14 @@ class FieldNum extends NumRing {
 		super();
 	}
 
+	inverse(num: number) {
+		if(num == 0) {
+			throw new Error("number can't be equal to zero");
+		}
+
+		return 1/num;
+	}
+
 	div(one:number, two:number) {
 		if(two == 0) {
 			throw new Error("second number, can't be equal to zero");
