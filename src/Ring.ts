@@ -4,9 +4,9 @@ import Util = require('./Utils');
 export {Ring, NumRing, MatrixRing};
 
 interface Ring<T> {
-	plus(one:T, second:T):T
-	multiply(one:T, second:T)
-	is_commutative(one:T, second:T)
+	plus(one:T, second:T):T;
+	multiply(one:T, second:T);
+	is_commutative(one:T, second:T);
 }
 
 class NumRing extends Semigroup.SemigroupNumber implements Ring<number>{
@@ -19,11 +19,11 @@ class NumRing extends Semigroup.SemigroupNumber implements Ring<number>{
 	}
 
 	plus(one:number, second:number){
-		return one + second
+		return one + second;
 	}
 
 	multiply(one:number, second: number){
-		return one * second
+		return one * second;
 	}
 
 	//For Z, Q and R is always commutative
@@ -40,7 +40,7 @@ class MatrixRing implements Ring<Matrix> {
 	}
 
 	plus(one: Matrix, second:Matrix):Matrix {
-		return one.add(second.items())
+		return one.add(second.items());
 	}
 
 	multiply(one:Matrix, second: Matrix): Matrix {
