@@ -254,7 +254,7 @@ var FuzzySet = (function () {
     FuzzySet.prototype.compute = function (otherset, func) {
         var result = [];
         for (var i = 0; i < this.setdata.length; ++i) {
-            result.push(func(this.func(this.setdata[i]), otherset.apply(this.setdata[i])));
+            result.push(func(this.setdata[i], otherset.apply(this.setdata[i])));
         }
         return result;
     };
@@ -272,6 +272,7 @@ var FuzzySet = (function () {
     };
     return FuzzySet;
 })();
+exports.FuzzySet = FuzzySet;
 //Typical t-norms for fuzzy sets
 var FuzzySetTNorms = (function () {
     function FuzzySetTNorms() {

@@ -1,3 +1,5 @@
+export {FuzzySet};
+
 
 //Implementation of fuzzy sets
 class FuzzySet {
@@ -8,7 +10,7 @@ class FuzzySet {
 	private compute(otherset: FuzzySet, func:(A:number, B:number) => number): number[] {
 		let result:number[] = [];
 		for(let i = 0;i < this.setdata.length;++i) {
-			result.push(func(this.func(this.setdata[i]), otherset.apply(this.setdata[i])));
+			result.push(func(this.setdata[i], otherset.apply(this.setdata[i])));
 		}
 		return result;
 	}
