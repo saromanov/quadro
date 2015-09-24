@@ -250,17 +250,25 @@ var FuzzySet = (function () {
         this.func = func;
         this.setdata = setdata;
     }
+    //This helpful method provides inner computations for intersection and union
+    FuzzySet.prototype.compute = function (otherset, func) {
+        var result = [];
+        for (var i = 0; i < this.setdata.length; ++i) {
+            result.push(func(this.func(this.setdata[i]), otherset.apply(this.setdata[i])));
+        }
+        return result;
+    };
     //Apply func ti the data
     FuzzySet.prototype.apply = function (x) {
         return this.func(x);
     };
     //Return intersection of two fuzzy sets
     FuzzySet.prototype.intersection = function (otherset) {
-        var result = [];
-        for (var i = 0; i < this.setdata.length; ++i) {
-            result.push(Math.min(this.func(this.setdata[i]), otherset.apply(this.setdata[i])));
-        }
-        return result;
+        return this.compute(otherset, Math.min);
+    };
+    //Return union of two fuzzy sets
+    FuzzySet.prototype.union = function (otherset) {
+        return this.compute(otherset, Math.max);
     };
     return FuzzySet;
 })();
