@@ -326,6 +326,21 @@ var FiniteGroup = (function () {
         }
         return newelements;
     };
+    //compare returns 1 if FiniteGroup values is greater, 0 if equal 
+    //and -1 if r is greater
+    FiniteGroup.prototype.compareBySize = function (group) {
+        var size1 = this.size();
+        var size2 = group.size();
+        if (size1 > size2) {
+            return 1;
+        }
+        else if (size1 == size2) {
+            return 0;
+        }
+        else {
+            return -1;
+        }
+    };
     return FiniteGroup;
 })();
 exports.FiniteGroup = FiniteGroup;
